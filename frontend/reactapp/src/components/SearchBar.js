@@ -13,15 +13,16 @@ class SearchBar extends React.Component {
     };
       handleSubmit = (e) => {
         e.preventDefault();
-
-        axios
-            .post("http://localhost:8000/apicall/", {
-                name: this.state.city,
-            })
+		let data ;
+        axios.get("http://localhost:8000/apisearchcall/", 
+				{ params: { name: this.state.city, } })
             .then((res) => {
-                this.setState({
-                    city: "",
-                });
+                data = res.data;
+				this.setState({
+					details : data,
+					city: ""
+				});
+				console.log(data);
             })
             .catch((err) => {});
     };

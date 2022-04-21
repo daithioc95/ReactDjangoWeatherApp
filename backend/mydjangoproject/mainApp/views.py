@@ -21,13 +21,13 @@ class ReactView(APIView):
     def get(self, request):
         weather_data = []
         cities = City.objects.all()
-        # url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=0c1fcbefc9529befcf4349624a35b4a2'
         # Sort out secret key when city is undefinded
         city = 'Dublin'
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={os.getenv('WEATHER_API')}"
         city_weather = requests.get(url.format('Dublin')).json()
         weather_data.append(city_weather)
         return Response(weather_data)
+
 
     def post(self, request):
         weather_data = []
@@ -40,6 +40,17 @@ class ReactView(APIView):
         # form = CityForm(request.POST)
         # form.save()
         return Response(weather_data)
+
+class SearchedLocation(APIView):
+
+    def get(self, request):
+        searched_location_data = []
+        print(request.query_params.get('name'))
+        city = request.query_params.get('name')
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={os.getenv('WEATHER_API')}"
+        Result_location_data = requests.get(url.format(city)).json()
+        searched_location_data.append(Result_location_data)
+        return Response(searched_location_data)
 
 
         # if request.method == 'POST':

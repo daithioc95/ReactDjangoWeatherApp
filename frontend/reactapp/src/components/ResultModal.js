@@ -1,28 +1,26 @@
 // https://www.digitalocean.com/community/tutorials/react-modal-component
+// https://blog.bitsrc.io/build-a-simple-modal-component-with-react-1b174c3f5301
 import React from 'react';
 import './ResultModal.css';
 import LocationCard from './LocationCard';
 
-const ResultModal = ({ handleClose, show, result_weather }) => {
-    const showHideClassName = show ? "modal display-block" : "modal display-none";
-  
-    return (
-        <div>
-        {this.state.details.map((result_weather, id) => (
-            <div className={showHideClassName}>
-            <section className="modal-main">
-            <LocationCard />
-            <h1>{result_weather.name} </h1>
-            <h2>{result_weather.main.temp}</h2>
-            <button type="button" onClick={handleClose}>
-                      Close
-                    </button>
-                  </section>
-                </div>
-            )
-            )}
-     </div>
-    );
+class ResultModal extends React.Component {
+  onClose = e => {
+    console.log("clicked Closed");
+    this.props.onClose && this.props.onClose(e);
   };
+
+  render() {
+    if(!this.props.show){
+      return null;
+  }
+    return <div className='modal'>{this.props.children} Modal
+    <button  onClick={e => {
+              this.onClose();
+              }}
+          > Close </button>
+          </div>;
+  }
+}
 
   export default ResultModal
