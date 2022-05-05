@@ -50,6 +50,7 @@ class SearchedLocation(APIView):
         url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={os.getenv('WEATHER_API')}"
         Result_location_data = requests.get(url.format(city)).json()
         searched_location_data.append(Result_location_data)
+        print(searched_location_data)
         return Response(searched_location_data)
 
 

@@ -1,9 +1,19 @@
 import React from 'react';
 import axios from 'axios';
+import ResultModal from './ResultModal';
 
 class SearchBar extends React.Component {
         state = {
           city: "",
+          show: false,
+		  test: "test data",
+		  details: [],
+      };
+      showModal = e => {
+        console.log("clicked show");
+        this.setState({
+          show: !this.state.show
+        });
       };
 
       handleInput = (e) => {
@@ -22,13 +32,21 @@ class SearchBar extends React.Component {
 					details : data,
 					city: ""
 				});
-				console.log(data);
+				console.log(this.state.details[0]['message']);
+				console.log(this.state.details.length);
+        if (this.state.details[0]['message']){
+            console.log('not found')
+        }
+        else{
+          console.log('found')
+        }
             })
-            .catch((err) => {});
+            .catch((err) => {console.log('error');});
     };
 
     render() {
       return (
+        <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text" className="form-control" 
                                placeholder="Enter City name"
@@ -38,6 +56,9 @@ class SearchBar extends React.Component {
                                onChange={this.handleInput} />
           <button className='btn' onClick={this.showModal}>Submit</button>
         </form>
+        <ResultModal onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
+        <p>{this.state.test}</p>
+        </div>
       );
     }
   }

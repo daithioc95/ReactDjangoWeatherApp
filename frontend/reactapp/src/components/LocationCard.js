@@ -17,6 +17,7 @@ class LocationCard extends React.Component {
 			this.setState({
 				details : data	
 			});
+			console.log(this.state.details)
 		})
 		.catch(err => {})
 	}
