@@ -3,12 +3,14 @@ import axios from 'axios';
 import ResultModal from './ResultModal';
 
 class SearchBar extends React.Component {
+
         state = {
           city: "",
           show: false,
-		  test: "test data",
-		  details: [],
+		      test: "test data",
+		      details: [],
       };
+
       showModal = e => {
         console.log("clicked show");
         this.setState({
@@ -21,9 +23,10 @@ class SearchBar extends React.Component {
             [e.target.name]: e.target.value,
         });
     };
+
       handleSubmit = (e) => {
         e.preventDefault();
-		let data ;
+		    let data ;
         axios.get("http://localhost:8000/apisearchcall/", 
 				{ params: { name: this.state.city, } })
             .then((res) => {
