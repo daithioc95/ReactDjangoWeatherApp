@@ -60,7 +60,7 @@ class SearchBar extends React.Component {
           <button className='btn' onClick={this.showModal}>Submit</button>
         </form>
         <ResultModal onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
-        <p>{this.state.test}</p>
+        {/* <p>{this.state.test}</p> */}
         </div>
       );
     }

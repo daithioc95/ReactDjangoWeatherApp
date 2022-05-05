@@ -30,9 +30,9 @@ class LocationCard extends React.Component {
             })
             .catch((err) => {console.log('error');});
 	}
-	onDelete() {
-		console.log('Click happened');
-	  }
+	// onDelete() {
+	// 	console.log('Click happened');
+	//   }
 
 render() {
 	return(
@@ -40,11 +40,11 @@ render() {
 		{this.state.details.map((city_weather, id) => (
 		<div key={id}>
 		<div >
-			<div >
+			<div>
 				<h1>{city_weather.name} </h1>
 				<h2>{city_weather.main.temp}</h2>
-				{/* <button  onClick = {() => onDelete(this.props.id)}
-          					> Remove </button> */}
+				<button  onClick = {() => this.props.onDelete(city_weather.id)}
+          					> Remove </button>
 			</div>
 		</div>
 		</div>
