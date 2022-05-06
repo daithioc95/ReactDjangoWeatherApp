@@ -29,14 +29,16 @@ if(this.props.resultData){
 				<h2>{city_weather.main.temp}</h2>
 			</div>
 		</div>
-		</div>
-			)
-		)} 
-    {/* {this.props.resultData} */}
     <button  onClick={e => {
               this.onClose();
               }}
           > Close </button>
+    <button  onClick = {() => this.props.onAdd(city_weather.name, city_weather.id)}
+                > Add </button>
+		</div>
+			)
+		)} 
+    {/* {this.props.resultData} */}
           </div>;
   }
   

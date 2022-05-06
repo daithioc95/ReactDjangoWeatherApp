@@ -15,9 +15,16 @@ const deleteLocation = (id) => {
   setLocations(locations.filter((location) => location.id !== id))
 }
 
+const addLocation = (location, id) => {
+  const newLocation = { "name": location, "id": id}
+  if (locations.findIndex(item => item.id === newLocation.id)===-1) {
+    setLocations([...locations, newLocation])
+  }
+}
+
       return (
           <div>
-            <SearchBar />
+            <SearchBar onAdd = {addLocation} />
             {locations.map(location =>(
             <LocationCard key = {location.id} location = {location.name} 
               onDelete = {deleteLocation} />

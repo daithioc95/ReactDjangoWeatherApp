@@ -9,7 +9,6 @@ class LocationCard extends React.Component {
 	}	
 	
 	componentDidMount() {
-
 		let data ;
         axios.get("http://localhost:8000/apisearchcall/", 
 				{ params: { name: this.props.location, } })
@@ -30,9 +29,6 @@ class LocationCard extends React.Component {
             })
             .catch((err) => {console.log('error');});
 	}
-	// onDelete() {
-	// 	console.log('Click happened');
-	//   }
 
 render() {
 	return(
