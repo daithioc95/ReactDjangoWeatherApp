@@ -17,7 +17,13 @@ const deleteLocation = (id) => {
 
 const addLocation = (location, id) => {
   const newLocation = { "name": location, "id": id}
-  if (locations.findIndex(item => item.id === newLocation.id)===-1) {
+  if (locations.findIndex(item => item.id === newLocation.id)!==-1) {
+    alert("Location already on dashboard")
+  }
+  else if(locations.length>=6){
+    alert("Maximum number of locations on dashboard, please remove and add again")
+  }
+  else{
     setLocations([...locations, newLocation])
   }
 }
