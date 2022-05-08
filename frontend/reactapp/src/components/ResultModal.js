@@ -33,7 +33,8 @@ if(this.props.resultData){
               this.onClose();
               }}
           > Close </button>
-    <button  onClick = {() => this.props.onAdd(city_weather.name, city_weather.id)}
+    <button  onClick = {() => {this.onClose(); 
+                              this.props.onAdd(city_weather.name, city_weather.id);}}
                 > Add </button>
 		</div>
 			)
