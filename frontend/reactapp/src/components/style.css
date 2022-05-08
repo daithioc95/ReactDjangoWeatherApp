@@ -1,0 +1,21 @@
+.modal {
+    position: fixed;
+    top: 10%;
+    left: 40%;
+    /* width:20%;
+    height: 20%; */
+    background: green;
+  }
+  
+  .display-block {
+    display: block;
+  }
+  
+  .display-none {
+    display: none;
+  }
+
+  .locationCards{
+    width:30%;
+    display: inline-block;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './style.css';
 
 class LocationCard extends React.Component {
 
@@ -26,7 +27,7 @@ class LocationCard extends React.Component {
 
 render() {
 	return(
-	<div>
+	<div className='locationCards'>
 		{this.state.details.map((city_weather, id) => (
 		<div key={id}>
 		<div >
@@ -35,6 +36,7 @@ render() {
 				<h2>{city_weather.main.temp}</h2>
 				<button  onClick = {() => this.props.onDelete(city_weather.id)}
           					> Remove </button>
+				<button> Sunset Spots </button>
 			</div>
 		</div>
 		</div>

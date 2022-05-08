@@ -1,7 +1,7 @@
 // https://www.digitalocean.com/community/tutorials/react-modal-component
 // https://blog.bitsrc.io/build-a-simple-modal-component-with-react-1b174c3f5301
 import React from 'react';
-import './ResultModal.css';
+import './style.css';
 
 class ResultModal extends React.Component {
   onClose = e => {
