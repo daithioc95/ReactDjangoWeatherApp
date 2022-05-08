@@ -30,19 +30,24 @@ class SearchBar extends React.Component {
         axios.get("http://localhost:8000/apisearchcall/", 
 				{ params: { name: this.state.city, } })
             .then((res) => {
-                data = res.data;
-				this.setState({
-					details : data,
-					city: ""
+				data = res.data;
+                if(data[0]['cod']===200){
+					console.log("found")
+					this.setState({
+						details : data,
+						city: "",
+						show: true
 				});
-				console.log(this.state.details[0]['message']);
-				console.log(this.state.details.length);
-        if (this.state.details[0]['message']){
-            console.log('not found')
-        }
-        else{
-          console.log('found')
-        }
+					console.log(this.state.details[0]['name']);
+					console.log(this.state.details.length);
+                }
+				else{
+					this.setState({
+						show: false
+				});
+				alert("Location not found")
+				}
+                
             })
             .catch((err) => {console.log('error');});
     };
@@ -57,7 +62,7 @@ class SearchBar extends React.Component {
                                aria-describedby="basic-addon1"
                                value={this.state.city} name="city"
                                onChange={this.handleInput} />
-          <button className='btn' onClick={this.showModal}>Submit</button>
+          <button className='btn'>Submit</button>
         </form>
         <ResultModal onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
         {/* <p>{this.state.test}</p> */}

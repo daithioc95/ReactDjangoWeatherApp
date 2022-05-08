@@ -14,7 +14,11 @@ class ResultModal extends React.Component {
       return null;
   }
 
-if(this.props.resultData){
+  if(this.props.resultData===null){
+    return null;
+}
+
+if(this.props.resultData!==null){
     return <div className='modal'>
 
 
@@ -38,8 +42,7 @@ if(this.props.resultData){
                 > Add </button>
 		</div>
 			)
-		)} 
-    {/* {this.props.resultData} */}
+		)}
           </div>;
   }
   

@@ -18,14 +18,8 @@ class LocationCard extends React.Component {
 					details : data,
 					city: ""
 				});
-				console.log(this.state.details[0]['message']);
+				console.log(this.state.details[0]);
 				console.log(this.state.details.length);
-        if (this.state.details[0]['message']){
-            console.log('not found')
-        }
-        else{
-          console.log('found')
-        }
             })
             .catch((err) => {console.log('error');});
 	}
