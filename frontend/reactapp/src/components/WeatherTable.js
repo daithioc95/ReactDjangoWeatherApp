@@ -29,7 +29,7 @@ const addLocation = (location, id) => {
 }
 
       return (
-          <div>
+          <div className='container'>
             <SearchBar onAdd = {addLocation} />
             {locations.map(location =>(
             <LocationCard key = {location.id} location = {location.name} 

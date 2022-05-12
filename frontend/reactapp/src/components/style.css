@@ -5,6 +5,7 @@
     /* width:20%;
     height: 20%; */
     background: green;
+    display: block !important;
   }
   
   .display-block {
@@ -18,4 +19,30 @@
   .locationCards{
     width:30%;
     display: inline-block;
+    
+}
+
+.card {
+  /* background-image: url("https://i.imgur.com/dpqZJV5.jpg"); */
+  background-size: cover;
+  width: 600px;
+  border-radius: 1.25rem !important;
+  box-shadow: 0px 8px 16px 4px #9E9E9E;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#SearchBar{
+  width: 50%;
+  margin: 100px 0 100px 25%;
+  display: flex;
+}
+
+.weather-logo{
+  width: 20%;
+}
+
+.Remove-Button{
+  right: 2% !important;
+  margin-top: 2%;
 }

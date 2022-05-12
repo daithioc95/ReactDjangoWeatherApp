@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import ResultModal from './ResultModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 class SearchBar extends React.Component {
 
@@ -55,14 +57,14 @@ class SearchBar extends React.Component {
     render() {
       return (
         <div>
-        <form onSubmit={this.handleSubmit}>
+        <form id='SearchBar' onSubmit={this.handleSubmit}>
           <input type="text" className="form-control" 
                                placeholder="Enter City name"
                                aria-label="Username"
                                aria-describedby="basic-addon1"
                                value={this.state.city} name="city"
                                onChange={this.handleInput} />
-          <button className='btn'>Submit</button>
+          <button className='btn'><FontAwesomeIcon icon={faSearch} /></button>
         </form>
         <ResultModal onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
         {/* <p>{this.state.test}</p> */}
