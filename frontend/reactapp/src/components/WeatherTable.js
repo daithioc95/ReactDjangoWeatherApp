@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import LocationCard from './LocationCard';
+import EmptyCards from './EmptyCards';
 import { useState } from 'react';
 
 // Callbacks
@@ -10,9 +11,12 @@ const [locations, setLocations] = useState([{"name":"Paris", "id": 2988507},
                     {"name":"New York", "id": 5128581}, 
                     {"name":"London", "id": 2643743},
                     {"name":"Sydney", "id": 2147714}])
-
+const [emptyCards, setEmptyCards] = useState([1,1])
 const deleteLocation = (id) => {
   setLocations(locations.filter((location) => location.id !== id))
+  setEmptyCards([...emptyCards, 1])
+  console.log('emptyCards')
+  console.log(emptyCards)
 }
 
 const addLocation = (location, id) => {
@@ -25,6 +29,9 @@ const addLocation = (location, id) => {
   }
   else{
     setLocations([...locations, newLocation])
+    emptyCards.pop(1)
+    console.log('emptyCards')
+    console.log(emptyCards)
   }
 }
 
@@ -32,11 +39,18 @@ const addLocation = (location, id) => {
           <div className='container'>
             <SearchBar onAdd = {addLocation} />
             {locations.map(location =>(
-            <LocationCard key = {location.id} location = {location.name} 
+              <LocationCard key = {location.id} location = {location.name} 
               onDelete = {deleteLocation} />
-            ))}
+              ))
+            }
+        {[...Array(emptyCards.length)].map((elementInArray, index) => ( 
+          <EmptyCards />
+    ) 
+)}
+
+
           </div>
       );
-    
-  }
+      
+    }
 export default WeatherTable

@@ -33,7 +33,7 @@ if(this.props.resultData!==null){
                   <span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
                   cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} /></span>
                   <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.name}</h2>
-                  <img className='mosal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.weather[0].icon + '.png'} alt="weather icon"></img>
+                  <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.weather[0].icon + '.png'} alt="weather icon"></img>
                   <div className='row'>
                     <div className='col-6'>
                       <p class="ml-auto mr-4 mb-0 med-font">{city_weather.weather[0].description}</p>
