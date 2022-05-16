@@ -66,8 +66,7 @@ class SearchBar extends React.Component {
                                onChange={this.handleInput} />
           <button className='btn'><FontAwesomeIcon icon={faSearch} /></button>
         </form>
-        <ResultModal onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
-        {/* <p>{this.state.test}</p> */}
+        <ResultModal infoButton="Info-Button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
         </div>
       );
     }

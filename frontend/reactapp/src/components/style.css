@@ -4,8 +4,12 @@
     left: 40%;
     /* width:20%;
     height: 20%; */
-    background: green;
+    background: 0.5;
     display: block !important;
+  }
+
+  #modal-card{
+    width: 60%;
   }
   
   .display-block {
@@ -42,7 +46,22 @@
   width: 20%;
 }
 
-.Remove-Button{
+.mosal-weather-logo{
+  width: 20%;
+  margin-left: 60%;
+}
+
+.Remove-Button, .Info-Button{
   right: 2% !important;
   margin-top: 2%;
 }
+
+.Info-Button{
+  margin-left: 95%;
+  margin-bottom: 2%;
+}
+
+.Info-Button-Loc{
+  display: none;
+}
+

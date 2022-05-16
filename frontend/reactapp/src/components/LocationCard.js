@@ -2,14 +2,24 @@ import React from 'react';
 import axios from 'axios';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import ResultModal from './ResultModal';
 
 class LocationCard extends React.Component {
 
 	state = {
 		details : [],
 		city: "",
-	}	
+		show: false,
+		// infoButton: "Info-Button-Loc"
+	}
+
+	showModal = e => {
+        console.log("clicked show");
+        this.setState({
+          show: !this.state.show
+        });
+      };
 	
 	componentDidMount() {
 		let data ;
@@ -20,7 +30,8 @@ class LocationCard extends React.Component {
 				this.setState({
 					details : data,
 					image: data['base'],
-					city: ""
+					city: "",
+					show: false,
 				});
 				console.log(this.state.details[0]);
 				console.log(this.state.details.length);
@@ -42,12 +53,15 @@ render() {
 						<img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.weather[0].icon + '.png'} alt="weather icon"></img>
 						<p class="ml-auto mr-4 mb-0 med-font">{city_weather.weather[0].main}</p>
 						<h1 class="ml-auto mr-4 large-font">{city_weather.main.temp}&#176;</h1>
+						<span className='Info-Button'><FontAwesomeIcon style={{ color: 'blue',
+						cursor: 'pointer' }} icon={faInfoCircle} onClick = {this.showModal} /></span>
 					</div>
 				</div>
 			</div>
 		</div>
 			)
 		)}
+	<ResultModal infoButton="Info-Button-Loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
 	</div>
 	);
 }
