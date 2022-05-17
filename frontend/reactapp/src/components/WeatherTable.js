@@ -38,17 +38,20 @@ const addLocation = (location, id) => {
       return (
           <div className='container'>
             <SearchBar onAdd = {addLocation} />
+            <div className='row'>
             {locations.map(location =>(
               <LocationCard key = {location.id} location = {location.name} 
               onDelete = {deleteLocation} />
               ))
             }
+            
         {[...Array(emptyCards.length)].map((elementInArray, index) => ( 
           <EmptyCards />
     ) 
 )}
 
 
+          </div>
           </div>
       );
       

@@ -3,15 +3,18 @@ import React from 'react';
 class EmptyCards extends React.Component {
     render() {
         return (
-            <div>
-			<div class="container-fluid px-1 px-md-4 py-5 mx-auto">
-				<div class="row d-flex justify-content-center px-3">
-					<div class="card">
-						
+			<div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
+				<div>
+					<div class="container px-1 px-md-4 py-5 mx-auto">
+						<div>
+							<div className='empty-card card'>
+							
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>)
+		)
 }}
 
 export default EmptyCards

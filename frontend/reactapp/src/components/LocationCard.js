@@ -14,6 +14,7 @@ class LocationCard extends React.Component {
 		// infoButton: "Info-Button-Loc"
 	}
 
+	
 	showModal = e => {
         console.log("clicked show");
         this.setState({
@@ -41,11 +42,11 @@ class LocationCard extends React.Component {
 
 render() {
 	return(
-	<div className='locationCards'>
+	<div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
 		{this.state.details.map((city_weather, id) => (
 		<div key={id}>
-			<div class="container-fluid px-1 px-md-4 py-5 mx-auto">
-				<div class="row d-flex justify-content-center px-3">
+			<div class="container px-1 px-md-4 py-5 mx-auto">
+				<div class="">
 					<div class="card">
 						<span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
 						cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} /></span>
