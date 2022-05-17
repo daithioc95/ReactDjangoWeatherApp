@@ -22,8 +22,6 @@ class ResultModal extends React.Component {
 
 if(this.props.resultData!==null){
     return <div className='modal'>
-
-
       {/* const city_weather = this.props.resultData */}
       {this.props.resultData.map((city_weather, id) => (
         <div key={id}>
@@ -32,22 +30,23 @@ if(this.props.resultData!==null){
                 <div id='modal-card' class="card">
                   <span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
                   cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} /></span>
-                  <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.name}</h2>
-                  <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.weather[0].icon + '.png'} alt="weather icon"></img>
+                  <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
+                  <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.country}</h2>
+                  <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
                   <div className='row'>
                     <div className='col-6'>
-                      <p class="ml-auto mr-4 mb-0 med-font">{city_weather.weather[0].description}</p>
-                      <h1 class="ml-auto mr-4 large-font">{city_weather.main.temp}&#176;</h1>
+                      <p class="ml-auto mr-4 mb-0 med-font">{city_weather.description}</p>
+                      <h1 class="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
                     </div>
                     <div className='col-6'>
-                      <h5 class="ml-auto mr-4">Pressure: {city_weather.main.pressure}</h5>
-                      <h5 class="ml-auto mr-4">Humidity: {city_weather.main.humidity}</h5>
-                      <h5 class="ml-auto mr-4">Wind: {city_weather.wind.speed}</h5>
+                      <h5 class="ml-auto mr-4">Pressure: {city_weather.pressure}Pa</h5>
+                      <h5 class="ml-auto mr-4">Humidity: {city_weather.humidity}%</h5>
+                      <h5 class="ml-auto mr-4">Wind: {city_weather.windspeed}kn</h5>
                     </div>
                   </div>
                   <span className={this.props.infoButton}><FontAwesomeIcon style={{ color: 'blue',
                   cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 
-                    this.props.onAdd(city_weather.name, city_weather.id);}} /></span>
+                    this.props.onAdd(city_weather.city, city_weather.id);}} /></span>
                 </div>
               </div>
             </div>

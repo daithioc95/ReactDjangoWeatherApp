@@ -5,7 +5,7 @@ class EmptyCards extends React.Component {
         return (
 			<div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
 				<div>
-					<div class="container px-1 px-md-4 py-5 mx-auto">
+					<div className="container px-1 px-md-4 py-5 mx-auto">
 						<div>
 							<div className='empty-card card'>
 							

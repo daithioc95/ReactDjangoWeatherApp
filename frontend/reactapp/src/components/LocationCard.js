@@ -34,7 +34,7 @@ class LocationCard extends React.Component {
 					city: "",
 					show: false,
 				});
-				console.log(this.state.details[0]);
+				console.log(this.state.details);
 				console.log(this.state.details.length);
             })
             .catch((err) => {console.log('error');});
@@ -50,10 +50,10 @@ render() {
 					<div class="card">
 						<span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
 						cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} /></span>
-						<h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.name}</h2>
-						<img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.weather[0].icon + '.png'} alt="weather icon"></img>
-						<p class="ml-auto mr-4 mb-0 med-font">{city_weather.weather[0].main}</p>
-						<h1 class="ml-auto mr-4 large-font">{city_weather.main.temp}&#176;</h1>
+						<h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
+						<img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
+						<p class="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>
+						<h1 class="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
 						<span className='Info-Button'><FontAwesomeIcon style={{ color: 'blue',
 						cursor: 'pointer' }} icon={faInfoCircle} onClick = {this.showModal} /></span>
 					</div>
