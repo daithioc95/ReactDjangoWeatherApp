@@ -29,7 +29,7 @@ if(this.props.resultData!==null){
               <div class="row d-flex justify-content-center px-3">
                 <div id='modal-card' class="card">
                   <span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
-                  cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} /></span>
+                  cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" /></span>
                   <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                   <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.country}</h2>
                   <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
@@ -46,7 +46,7 @@ if(this.props.resultData!==null){
                   </div>
                   <span className={this.props.infoButton}><FontAwesomeIcon style={{ color: 'blue',
                   cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 
-                    this.props.onAdd(city_weather.city, city_weather.id);}} /></span>
+                    this.props.onAdd(city_weather.city, city_weather.id);}} size="lg" /></span>
                 </div>
               </div>
             </div>

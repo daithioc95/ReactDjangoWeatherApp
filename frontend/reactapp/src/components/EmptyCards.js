@@ -8,7 +8,7 @@ class EmptyCards extends React.Component {
 					<div className="container px-1 px-md-4 py-5 mx-auto">
 						<div>
 							<div className='empty-card card'>
-							
+								<div class="hide">Use the serach bar to add a location here.</div>
 							</div>
 						</div>
 					</div>

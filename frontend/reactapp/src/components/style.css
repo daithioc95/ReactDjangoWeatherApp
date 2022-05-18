@@ -1,3 +1,7 @@
+*{
+  font-family: Arial;
+}
+
 .modal {
     position: fixed;
     top: 10%;
@@ -35,11 +39,21 @@
   box-shadow: 0px 8px 16px 4px #9E9E9E;
   /* margin-top: 50px; */
   /* margin-bottom: 50px; */
-  padding: 5px;
+  padding: 10px;
 }
 
 .empty-card{
   border: 5px dashed blue !important;
+}
+
+.hide {
+  display: none;
+}
+
+.empty-card:hover > .hide{
+  display: block;
+  text-align: center;
+  margin-bottom: 50%;
 }
 
 #SearchBar{
