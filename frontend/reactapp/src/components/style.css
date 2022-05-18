@@ -46,6 +46,15 @@
   width: 50%;
   margin: 100px 0 100px 25%;
   display: flex;
+	/* position: relative; */
+  position: absolute;
+  top: 35%;
+}
+
+@media screen and (max-width:570px) {
+	#SearchBar {
+		top: 10%;
+	}
 }
 
 .weather-logo{
@@ -58,12 +67,12 @@
 }
 
 .Remove-Button, .Info-Button{
-  right: 2% !important;
+  right: 5% !important;
   margin-top: 2%;
 }
 
 .Info-Button{
-  margin-left: 95%;
+  margin-left: 92%;
   margin-bottom: 2%;
 }
 
@@ -75,6 +84,20 @@ footer {
   background-color: #f8f9fa;
   padding: 25px;
   margin-top: 30px;
-  border-top: 2px solid blue;
+}
+.copyright{
+  margin-top: 15px;
+	text-align: center;
+	font-size: 13px;
+	color: #aaa;
+	margin-bottom: 0;
 }
 
+#hero-image{
+  width: 100%;
+	max-height: 570px;
+	margin-bottom: 10px;
+	object-fit: cover;
+	object-position: 50% 60%;
+	opacity: 0.75;
+}

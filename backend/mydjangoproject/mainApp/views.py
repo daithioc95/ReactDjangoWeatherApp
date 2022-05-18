@@ -27,7 +27,7 @@ class SearchedLocation(APIView):
                 tempToCel = round(((Result_location_data['main']['temp'] - 32) * 5/9),1)
                 weather = {
                             'city' : Result_location_data['name'],
-                            'id': Result_location_data['sys']['id'],
+                            'id': Result_location_data['id'],
                             'temperature' : tempToCel,
                             'brief' : Result_location_data['weather'][0]['main'],
                             'description' : Result_location_data['weather'][0]['description'],

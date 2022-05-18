@@ -10,6 +10,7 @@ class App extends React.Component {
     return (
     <div>
       <Navbar />
+      <img id="hero-image" alt='Sky with compass' src='assets\hero-image.jpg'></img>
       <WeatherTable />
       <Footer />
     </div>
