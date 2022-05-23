@@ -2,43 +2,40 @@
   font-family: Arial;
 }
 
+h1, h2, p{
+  color: #476985;
+}
+
 .modal {
-    position: fixed;
-    top: 10%;
-    left: 40%;
-    /* width:20%;
-    height: 20%; */
-    background: rgba(0,0,0,0.5);
-    display: block !important;
-  }
+  position: fixed;
+  top: 10%;
+  left: 40%;
+  background: rgba(0,0,0,0.5);
+  display: block !important;
+}
 
-  #modal-card{
-    width: 60%;
-  }
+#modal-card{
+  width: 60%;
+}
   
-  .display-block {
-    display: block;
-  }
+.display-block {
+  display: block;
+}
   
-  .display-none {
-    display: none;
-  }
+.display-none {
+  display: none;
+}
 
-  .locationCards{
-    width:30%;
-    display: inline-block;
+.locationCards{
+  width:30%;
+  display: inline-block;
 }
 
 .card {
-  /* background-image: url("https://i.imgur.com/dpqZJV5.jpg"); */
-  /* background-size: cover; */
-  /* width: 600px; */
   background-color: #C4E4FF !important;
   min-height: 250px;
   border-radius: 1.25rem !important;
   box-shadow: 0px 8px 16px 4px #9E9E9E;
-  /* margin-top: 50px; */
-  /* margin-bottom: 50px; */
   padding: 10px;
 }
 
@@ -60,7 +57,6 @@
   width: 50%;
   margin: 100px 0 100px 25%;
   display: flex;
-	/* position: relative; */
   position: absolute;
   top: 35%;
 }
