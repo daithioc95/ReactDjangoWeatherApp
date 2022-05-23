@@ -39,6 +39,7 @@ const addLocation = (location, id) => {
 }
 
       return (
+        <div className='container-fluid weather-table-container'>
         <div className='container'>
           
             <SearchBar onAdd = {addLocation} />
@@ -55,6 +56,7 @@ const addLocation = (location, id) => {
 )}
 
 
+          </div>
           </div>
           </div>
       );

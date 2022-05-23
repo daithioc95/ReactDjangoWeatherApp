@@ -33,7 +33,7 @@
   /* background-image: url("https://i.imgur.com/dpqZJV5.jpg"); */
   /* background-size: cover; */
   /* width: 600px; */
-  background-color: lightblue !important;
+  background-color: #C4E4FF !important;
   min-height: 250px;
   border-radius: 1.25rem !important;
   box-shadow: 0px 8px 16px 4px #9E9E9E;
@@ -95,9 +95,8 @@
 }
 
 footer {
-  background-color: #f8f9fa;
+  background-color: #E1F2FF;
   padding: 25px;
-  margin-top: 30px;
 }
 .copyright{
   margin-top: 15px;
@@ -110,8 +109,15 @@ footer {
 #hero-image{
   width: 100%;
 	max-height: 570px;
-	margin-bottom: 10px;
 	object-fit: cover;
 	object-position: 50% 60%;
 	opacity: 0.75;
+}
+
+.weather-table-container{
+  background-color: #E1F2FF;
+}
+
+.navbar{
+  background-color: #E1F2FF;
 }

@@ -24,10 +24,14 @@ if(this.props.resultData!==null){
     return <div className='modal'>
       {/* const city_weather = this.props.resultData */}
       {this.props.resultData.map((city_weather, id) => (
-        <div key={id}>
+        <div key={id} onClick = {() => {this.onClose(); 
+          this.props.onAdd(city_weather.city, city_weather.id);}}>
           <div class="container-fluid px-1 px-md-4 py-5 mx-auto">
               <div class="row d-flex justify-content-center px-3">
-                <div id='modal-card' class="card">
+                <div id='modal-card' class="card" onClick={e => {
+          // do not close modal if anything inside modal content is clicked
+          e.stopPropagation();
+        }}>
                   <span className='text-right position-absolute Remove-Button'><FontAwesomeIcon style={{ color: 'red',
                   cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" /></span>
                   <h2 class="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
@@ -44,7 +48,7 @@ if(this.props.resultData!==null){
                       <h5 class="ml-auto mr-4">Wind: {city_weather.windspeed}kn</h5>
                     </div>
                   </div>
-                  <span className={this.props.infoButton}><FontAwesomeIcon style={{ color: 'blue',
+                  <span className={this.props.infoButton}><FontAwesomeIcon style={{ color: '#476985',
                   cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 
                     this.props.onAdd(city_weather.city, city_weather.id);}} size="lg" /></span>
                 </div>
