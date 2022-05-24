@@ -5,19 +5,19 @@ import EmptyCards from './EmptyCards';
 import { useState } from 'react';
 
 const WeatherTable = () => {
+  // Preset locations
   const [locations, setLocations] = useState([{"name":"Paris", "id": 2988507}, 
                       {"name":"New York", "id": 5128581}, 
                       {"name":"London", "id": 2643743},
                       {"name":"Sydney", "id": 2147714},
                       {"name":"Berlin", "id": 2950159},
                       {"name":"Beijing", "id": 1816670},])
+  // Empty Card slots
   const [emptyCards, setEmptyCards] = useState([1,1,1])
+  // Delete specified location and feed empty card slot
   const deleteLocation = (id) => {
-    console.log(id)
     setLocations(locations.filter((location) => location.id !== id))
     setEmptyCards([...emptyCards, 1])
-    console.log('emptyCards')
-    console.log(emptyCards)
   }
   const addLocation = (location, id) => {
     const newLocation = { "name": location, "id": id}
@@ -30,8 +30,6 @@ const WeatherTable = () => {
     else{
       setLocations([...locations, newLocation])
       emptyCards.pop(1)
-      console.log('emptyCards')
-      console.log(emptyCards)
     }
   }
 
@@ -40,13 +38,14 @@ const WeatherTable = () => {
       <div className='container'>
         <SearchBar onAdd = {addLocation} />
         <div className='row'>
+          {/* Map all locations location cards */}
         {locations.map(location =>(
           <LocationCard key = {location.id} location = {location.name} 
           onDelete = {deleteLocation} />
         ))}
-        
-        {[...Array(emptyCards.length)].map((elementInArray, index) => ( 
-          <EmptyCards />
+        {/* Map remaning slots with empty cards */}
+        {[...Array(emptyCards.length)].map(() => ( 
+          <EmptyCards key={Math.random()} />
         ))}
         </div>
       </div>

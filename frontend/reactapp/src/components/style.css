@@ -1,11 +1,19 @@
+/* Fonts */
 *{
   font-family: Arial;
 }
 
-h1, h2, p{
+h1, h2, h5, p{
   color: #476985;
 }
 
+/* Header */
+.navbar{
+  background-color: #E1F2FF;
+  color: #476985;
+}
+
+/* Reuslt Modal */
 .modal {
   position: fixed;
   top: 10%;
@@ -26,6 +34,12 @@ h1, h2, p{
   display: none;
 }
 
+.modal-weather-logo{
+  width: 20%;
+  margin-left: 60%;
+}
+
+/* Location Cards */
 .locationCards{
   width:30%;
   display: inline-block;
@@ -53,29 +67,6 @@ h1, h2, p{
   margin-bottom: 50%;
 }
 
-#SearchBar{
-  width: 50%;
-  margin: 100px 0 100px 25%;
-  display: flex;
-  position: absolute;
-  top: 35%;
-}
-
-@media screen and (max-width:570px) {
-	#SearchBar {
-		top: 10%;
-	}
-}
-
-.weather-logo{
-  width: 20%;
-}
-
-.modal-weather-logo{
-  width: 20%;
-  margin-left: 60%;
-}
-
 .Remove-Button, .Info-Button{
   right: 5% !important;
   margin-top: 2%;
@@ -90,6 +81,25 @@ h1, h2, p{
   display: none;
 }
 
+.weather-logo{
+  width: 20%;
+}
+
+/* Search Bar */
+#SearchBar{
+  width: 50%;
+  margin: 100px 0 100px 25%;
+  display: flex;
+  position: absolute;
+  top: 35%;
+}
+@media screen and (max-width:570px) {
+	#SearchBar {
+		top: 10%;
+	}
+}
+
+/* Footer */
 footer {
   background-color: #E1F2FF;
   padding: 25px;
@@ -102,6 +112,7 @@ footer {
 	margin-bottom: 0;
 }
 
+/* Page Layout */
 #hero-image{
   width: 100%;
 	max-height: 570px;
@@ -111,9 +122,5 @@ footer {
 }
 
 .weather-table-container{
-  background-color: #E1F2FF;
-}
-
-.navbar{
   background-color: #E1F2FF;
 }

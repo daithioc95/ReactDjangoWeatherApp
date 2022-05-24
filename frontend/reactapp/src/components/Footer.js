@@ -4,8 +4,8 @@ class Footer extends React.Component {
   render() {
     return (
       <footer>
-        <p class="copyright">Designed by&nbsp;
-          <a href="https://daithioc95.github.io/MS1/" target="_blank">
+        <p className="copyright">Designed by&nbsp;
+          <a href="https://daithioc95.github.io/MS1/" target="_blank" rel="noreferrer">
             CodeDoc
           </a>
         </p>
