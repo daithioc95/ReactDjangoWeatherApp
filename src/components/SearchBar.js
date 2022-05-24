@@ -63,7 +63,7 @@ class SearchBar extends React.Component {
           </button>
         </form>
         {/* Modal to show once location is searched */}
-        <ResultModal infoButton="Info-Button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
+        <ResultModal infoButton="info-button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
       </div>
     );
   }

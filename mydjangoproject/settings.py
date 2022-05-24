@@ -15,6 +15,10 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+from decouple import config 
+import dj_database_url
+import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +34,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['react-django-weather-app.herokuapp.com']
 
 
 # Application definition
@@ -45,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework', 
     'corsheaders',
     'mainApp',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -71,8 +79,11 @@ ROOT_URLCONF = 'mydjangoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 'DIRS': [
+        #     os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build'),
+        # ],
         'DIRS': [
-            os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build'),
+            os.path.join(BASE_DIR, 'build')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -95,10 +106,12 @@ WSGI_APPLICATION = 'mydjangoproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -143,6 +156,22 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build\\static'),
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build\\static'),
+# ]
+
+STATIC_URL = '/static/'
+# location where django collect all static files
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# location where you will store your static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'build/static')
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())

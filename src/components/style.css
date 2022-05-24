@@ -40,7 +40,7 @@ h1, h2, h5, p{
 }
 
 /* Location Cards */
-.locationCards{
+.location-cards{
   width:30%;
   display: inline-block;
 }
@@ -67,17 +67,17 @@ h1, h2, h5, p{
   margin-bottom: 50%;
 }
 
-.Remove-Button, .Info-Button{
+.remove-button, .info-button{
   right: 5% !important;
   margin-top: 2%;
 }
 
-.Info-Button{
+.info-button{
   margin-left: 92%;
   margin-bottom: 2%;
 }
 
-.Info-Button-Loc{
+.info-button-loc{
   display: none;
 }
 

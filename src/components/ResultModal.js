@@ -29,7 +29,7 @@ class ResultModal extends React.Component {
                     // do not close modal if anything inside modal content is clicked
                     e.stopPropagation();
                   }}>
-                    <span className='text-right position-absolute Remove-Button'>
+                    <span className='text-right position-absolute remove-button'>
                       <FontAwesomeIcon style={{ color: 'red',
                       cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
                     </span>
@@ -42,9 +42,9 @@ class ResultModal extends React.Component {
                         <h1 className="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
                       </div>
                       <div className='col-6'>
-                        <h5 className="ml-auto mr-4">Pressure: {city_weather.pressure}Pa</h5>
-                        <h5 className="ml-auto mr-4">Humidity: {city_weather.humidity}%</h5>
-                        <h5 className="ml-auto mr-4">Wind: {city_weather.windspeed}kn</h5>
+                        <h5 className="ml-auto mr-4"><b>Pressure:</b> {city_weather.pressure}Pa</h5>
+                        <h5 className="ml-auto mr-4"><b>Humidity:</b> {city_weather.humidity}%</h5>
+                        <h5 className="ml-auto mr-4"><b>Wind:</b> {city_weather.windspeed}kn</h5>
                       </div>
                     </div>
                     <span className={this.props.infoButton}>
