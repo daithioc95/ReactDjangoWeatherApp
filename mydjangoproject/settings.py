@@ -110,7 +110,7 @@ DATABASES = {
         'USER': config('USER_NAME'),
         'PASSWORD': config('PASSWORD'),
         'HOST': config('HOST'),
-        'PORT': '5432',
+        'PORT': process.env.PORT,
     }
 }
 
