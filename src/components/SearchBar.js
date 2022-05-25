@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
     e.preventDefault();
     let data ;
     // API call which passes location and gets weather data
-    axios.get("http://localhost:8000/apisearchcall/", 
+    axios.get("https://react-django-weather-app.herokuapp.com/apisearchcall/", 
     { params: { name: this.state.city, } })
     .then((res) => {
       data = res.data;
