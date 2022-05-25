@@ -16,8 +16,8 @@ h1, h2, h5, p{
 /* Reuslt Modal */
 .modal {
   position: fixed;
-  top: 10%;
-  left: 40%;
+  /* top: 10%;  
+  left: 40%; */
   background: rgba(0,0,0,0.5);
   display: block !important;
 }
