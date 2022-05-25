@@ -6,6 +6,7 @@ from . serializer import *
 from dotenv import load_dotenv
 load_dotenv()
 import os
+from decouple import config 
 
 env = environ.Env()
 
@@ -14,7 +15,7 @@ class SearchedLocation(APIView):
     def get(self, request):
         searched_location_data = []
         city = request.query_params.get('name')
-        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={os.getenv('WEATHER_API')}"
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={config('WEATHER_API')}"
         Result_location_data = requests.get(url.format(city)).json()
         if Result_location_data['cod']==200:
             # Convert api result from farrenheight to celcius
