@@ -3,7 +3,7 @@ import React from 'react';
 class EmptyCards extends React.Component {
   render() {
     return (
-      <div className='col-lg-4 col-md-6 col-sm-1 location-cards'>
+      <div className='col-lg-4 col-md-6 col-sm-1'>
         <div>
           <div className="container px-1 px-md-4 py-5 mx-auto">
             <div>
