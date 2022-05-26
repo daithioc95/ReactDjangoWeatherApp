@@ -43,12 +43,20 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
-    'rest_framework', 
+    'rest_framework',
+    'rest_framework.authtoken', # new
+    # 'dj_rest_auth' # new
     'corsheaders',
     'mainApp',
     'whitenoise.runserver_nostatic',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +89,8 @@ TEMPLATES = [
         #     os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build'),
         # ],
         'DIRS': [
-            os.path.join(BASE_DIR, 'build')
+            os.path.join(BASE_DIR, 'build'),
+            # os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -93,6 +102,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'mydjangoproject.wsgi.application'

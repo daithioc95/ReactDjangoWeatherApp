@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import hero from './assets/hero-image.jpg';
 
 class App extends React.Component {
+
+
   render() {
     return (
       <div>
