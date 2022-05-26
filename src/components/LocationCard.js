@@ -7,8 +7,8 @@ import ResultModal from './ResultModal';
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
-	state = {
-		details : [],
+  state = {
+    details : [],
 		city: "",
 		show: false,
 	}
@@ -20,10 +20,11 @@ class LocationCard extends React.Component {
   };
 	
   componentDidMount() {
+    const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
     this.interval = setTimeout(() => {
       let data ;
       // API call which passes location and gets weather data
-      axios.get("https://react-django-weather-app.herokuapp.com/apisearchcall/", 
+      axios.get(`${API_ENDPOINT}apisearchcall/`, 
 				{ params: { name: this.props.location, } })
           .then((res) => {
             data = res.data;
