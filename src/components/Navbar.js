@@ -29,6 +29,7 @@ function Navbar() {
       <nav className="navbar mx-auto">
         <span className="navbar-brand mb-0 h1 mx-auto"><Link to='/'>React Weather App</Link></span>
         <Link to='/Login'>Login</Link>
+        <Link to='/Register'>Register</Link>
         <Logout setToken={setToken} setUser={setUser} setMessage={setMessage} />
       </nav>
       <div>

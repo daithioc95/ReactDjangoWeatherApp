@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken', # new
-    # 'dj_rest_auth' # new
+    # 'dj_rest_auth', # new
+    'dj_rest_auth.registration',
     'corsheaders',
     'mainApp',
     'whitenoise.runserver_nostatic',
@@ -79,6 +80,7 @@ REST_FRAMEWORK = {
     ]
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ROOT_URLCONF = 'mydjangoproject.urls'
 

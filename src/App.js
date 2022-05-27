@@ -7,6 +7,7 @@ import hero from './assets/hero-image.jpg';
 import { Link, Route } from "react-router-dom";
 import Login from './components/Login';
 import HeroImage from './components/HeroImage';
+import Register from './components/Register';
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
         <Navbar />
         <Route path="/Login">
           <Login setToken={setToken} setUser={setUser} setMessage={setMessage} />
+          {/* <Logout setToken={setToken} setUser={setUser} setMessage={setMessage}/> */}
+        </Route>
+        <Route path="/Register">
+          <Register setToken={setToken} setUser={setUser} setMessage={setMessage} />
           {/* <Logout setToken={setToken} setUser={setUser} setMessage={setMessage}/> */}
         </Route>
           <span>{message}</span>
