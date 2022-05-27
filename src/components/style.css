@@ -124,3 +124,12 @@ footer {
 .weather-table-container{
   background-color: #E1F2FF;
 }
+
+.form-group{
+  margin-bottom: 10px;
+}
+
+form{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

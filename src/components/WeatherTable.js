@@ -7,23 +7,6 @@ import Login from './Login';
 
 const WeatherTable = () => {
 
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
-  const [message, setMessage] = useState(null);
-
-  const checkToken = () => {
-    setToken(localStorage.getItem('token'));
-  }
-
-  const checkUser = () => {
-    setUser(localStorage.getItem('user'));
-  }
-
-  useEffect(() => {
-    checkToken();
-    checkUser();
-  }, [token, user])
-
   // Preset locations
   const [locations, setLocations] = useState([{"name":"Paris", "id": 2988507}, 
                       {"name":"New York", "id": 5128581}, 
@@ -69,7 +52,7 @@ const WeatherTable = () => {
         </div>
       </div>
       {/* <Login setToken={setToken} setUser={setUser} setMessage={setMessage} /> */}
-      {message}
+      {/* {message} */}
     </div>
   );
 }

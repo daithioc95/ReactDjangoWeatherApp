@@ -28,7 +28,7 @@ function Login({ setToken, setUser, setMessage }){
                 ${authToken}
                 ${username}`
                 );
-        setMessage("Logged in");
+        setMessage(`Logged in as ${username}`);
     })
     .catch(err => {
         console.log(err);
@@ -37,11 +37,19 @@ function Login({ setToken, setUser, setMessage }){
 
     }
     return(
-        <form onSubmit={handleLoginSubmit}>
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        <input type="submit" value="Submit" />
-      </form>
+        <div className='container'>
+            <form onSubmit={handleLoginSubmit}>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Email address</label>
+                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                </div>
+                <button type="submit" className="btn btn-primary">Login</button>
+            </form>
+        </div>
     )
 }
 
