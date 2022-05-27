@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import hero from './assets/hero-image.jpg';
+import { Link, Route } from "react-router-dom";
+import Login from './components/Login';
 
 class App extends React.Component {
 
@@ -12,8 +14,10 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
+        <Route path="/Login" exact component={Login}/>
         <img id="hero-image" alt='Sky with compass' src={hero}></img>
-        <WeatherTable />
+        <Route path="/" exact component={WeatherTable}/>
+        {/* <WeatherTable /> */}
         <Footer />
       </div>
     );

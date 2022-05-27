@@ -68,7 +68,7 @@ const WeatherTable = () => {
         ))}
         </div>
       </div>
-      <Login setToken={setToken} setUser={setUser} setMessage={setMessage} />
+      {/* <Login setToken={setToken} setUser={setUser} setMessage={setMessage} /> */}
       {message}
     </div>
   );
