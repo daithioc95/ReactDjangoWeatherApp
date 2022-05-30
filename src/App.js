@@ -3,8 +3,7 @@ import WeatherTable from './components/WeatherTable';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import hero from './assets/hero-image.jpg';
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Login from './components/Login';
 import HeroImage from './components/HeroImage';
 import Register from './components/Register';
@@ -21,31 +20,31 @@ function App() {
 
   const checkUser = () => {
     setUser(localStorage.getItem('user'));
+    console.log(localStorage.getItem('user'))
   }
+
+  // const checkStatus = () => {
+  //   setStatus(localStorage.getItem('status'));
+  // }
 
   useEffect(() => {
     checkToken();
     checkUser();
+    // setStatus();
   }, [token, user])
 
     return (
       <div>
-        <Navbar />
+        <Navbar setToken={setToken} setUser={setUser} setMessage={setMessage} />
         <Route path="/Login">
           <Login setToken={setToken} setUser={setUser} setMessage={setMessage} />
-          {/* <Logout setToken={setToken} setUser={setUser} setMessage={setMessage}/> */}
         </Route>
         <Route path="/Register">
           <Register setToken={setToken} setUser={setUser} setMessage={setMessage} />
-          {/* <Logout setToken={setToken} setUser={setUser} setMessage={setMessage}/> */}
         </Route>
-          <span>{message}</span>
-        {/* <Route path="/Login" element={<Login setToken={setToken} setUser={setUser} setMessage={setMessage} />} />
-        {message} */}
+        {message}
         <Route path="/" exact component={HeroImage}/>
-        {/* <img id="hero-image" alt='Sky with compass' src={hero}></img> */}
         <Route path="/" exact component={WeatherTable}/>
-        {/* <WeatherTable /> */}
         <Footer />
       </div>
     );

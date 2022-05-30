@@ -7,6 +7,9 @@ const Logout = ({ setToken, setUser, setMessage }) => {
         setToken(null);
         setUser('')
         setMessage('You are logged out')
+        // localStorage.setItem('LoginStatus', false);
+        // setStatus(false)
+        // setLoginStatus(false);
     }
 
     return(

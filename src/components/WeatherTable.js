@@ -41,6 +41,7 @@ const WeatherTable = () => {
         <SearchBar onAdd = {addLocation} />
         <div className='row'>
           {/* Map all locations location cards */}
+          <h1>Locations</h1>
         {locations.map(location =>(
           <LocationCard key = {location.id} location = {location.name} 
           onDelete = {deleteLocation} />

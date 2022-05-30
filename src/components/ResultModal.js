@@ -19,10 +19,10 @@ class ResultModal extends React.Component {
     }
     // Return below when modal to be shown
     if(this.props.resultData!==null){
-      return <div className='modal'>
+      return <div className='modal' onClick = {() => {this.onClose();}}>
           {/* Map from resultData passed down */}
           {this.props.resultData.map((city_weather, id) => (
-            <div key={id} onClick = {() => {this.onClose();}}>
+            <div key={id}>
               <div className="container-fluid px-1 px-md-4 py-5 mx-auto">
                 <div className="row d-flex justify-content-center px-3">
                   <div id='modal-card' className="card" onClick={e => {

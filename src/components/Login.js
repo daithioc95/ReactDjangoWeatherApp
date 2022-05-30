@@ -29,6 +29,7 @@ function Login({ setToken, setUser, setMessage }){
                 ${username}`
                 );
         setMessage(`Logged in as ${username}`);
+        // setLoginStatus(true);
     })
     .catch(err => {
         console.log(err);
