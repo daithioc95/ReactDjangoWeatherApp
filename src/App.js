@@ -35,14 +35,19 @@ function App() {
 
     return (
       <div>
+
         <Navbar setToken={setToken} setUser={setUser} setMessage={setMessage} />
+    {message &&
+        <div class="alert alert-primary" role="alert">
+        {message}
+      </div>
+      }
         <Route path="/Login">
           <Login setToken={setToken} setUser={setUser} setMessage={setMessage} />
         </Route>
         <Route path="/Register">
           <Register setToken={setToken} setUser={setUser} setMessage={setMessage} />
         </Route>
-        {message}
         <Route path="/" exact component={HeroImage}/>
         <Route path="/" exact component={WeatherTable}/>
         <Footer />

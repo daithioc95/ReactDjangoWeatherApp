@@ -133,3 +133,7 @@ form{
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.alert{
+  margin-bottom: 0 !important;
+}

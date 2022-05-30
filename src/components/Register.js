@@ -1,9 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 function Register({ setToken, setUser, setMessage }){
-    
+    const history = useHistory();
+
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
     const[email, setEmail] = useState('')
@@ -32,8 +34,8 @@ function Register({ setToken, setUser, setMessage }){
                 ${username}
                 ${email}`
                 );
+        history.push("/");
         setMessage(`Registered as ${username}`);
-        setMessage("Registered");
     })
     .catch(err => {
         console.log(err);

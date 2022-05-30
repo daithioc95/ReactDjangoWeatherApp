@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 
 function Login({ setToken, setUser, setMessage }){
+    const history = useHistory();
     
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
@@ -28,6 +31,7 @@ function Login({ setToken, setUser, setMessage }){
                 ${authToken}
                 ${username}`
                 );
+            history.push("/");
         setMessage(`Logged in as ${username}`);
         // setLoginStatus(true);
     })
