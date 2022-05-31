@@ -13,7 +13,7 @@ function Login({ setToken, setUser, setMessage }){
     const handleLoginSubmit = e => {
         const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
         e.preventDefault();
-        
+
         const loginData = {
             'username': username,
             'password': password
