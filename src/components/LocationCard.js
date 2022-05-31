@@ -50,12 +50,23 @@ class LocationCard extends React.Component {
     this.setState({
       isFav: !this.state.isFav
     });
-    console.log(id)
-    console.log(this.state.isFav)
+    if(localStorage.getItem('user')){
+      const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
+      this.interval = setTimeout(() => {
+          // API call which passes location and gets weather data
+          axios.get(`${API_ENDPOINT}getuserfavs/`, 
+          { params: { id: id, state: this.state.isFav, user: localStorage.getItem('user') } })
+              .then((res) => {
+                console.log(res)
+                })
+                .catch((err) => {console.log('error');});
+        }, .1);
+    }
+    else{
+      alert("Please Login or register to save a favourite")
+    }
   }
 
-  // addToFav = e => {
-  // };
 
   render() {
     return(
@@ -66,11 +77,14 @@ class LocationCard extends React.Component {
               <div className="">
                 <div className="card">
                     <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
-                  <span className='text-right position-absolute remove-button'>
+                  
                     {/* Delete location icon */}
-                    <FontAwesomeIcon style={{ color: 'red',
+                    { this.props.favourite==="true" ? <></>
+          : 
+          <span className='text-right position-absolute remove-button'><FontAwesomeIcon style={{ color: 'red',
                     cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
-                  </span>
+                  </span> }
+                    
                   <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                   <img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
                   <p className="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>

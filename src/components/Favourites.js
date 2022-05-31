@@ -14,15 +14,14 @@ const Favourites = () => {
         //   setFavourites([...Favourites, newFavourite])
         }
       
-
     return (
         <div className='container-fluid weather-table-container'>
-        <SearchBar onAdd = {addFavourite} />
+        <SearchBar favourite="true" />
           <div className='container'>
             <div className='row'>
               <h1>{username}'s Favourites</h1>
               {locations.map(location =>(
-            <LocationCard key = {location.id} location = {location.name} />
+            <LocationCard key = {location.id} location = {location.name} favourite="true" />
             ))}
             </div>
           </div>

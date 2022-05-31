@@ -4,11 +4,23 @@ import React from 'react';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faPlusCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
 
 class ResultModal extends React.Component {
+  state = {
+    isFav: false,
+	}
   onClose = e => {
     this.props.onClose && this.props.onClose(e);
   };
+
+  setIsFav(id){
+    this.setState({
+      isFav: !this.state.isFav
+    });
+    console.log(id)
+    console.log(this.state.isFav)
+  }
 
   render() {
     if(!this.props.show){
@@ -29,6 +41,7 @@ class ResultModal extends React.Component {
                     // do not close modal if anything inside modal content is clicked
                     e.stopPropagation();
                   }}>
+                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
                     <span className='text-right position-absolute remove-button'>
                       <FontAwesomeIcon style={{ color: 'red',
                       cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
@@ -47,12 +60,12 @@ class ResultModal extends React.Component {
                         <h5 className="ml-auto mr-4"><b>Wind:</b> {city_weather.windspeed}kn</h5>
                       </div>
                     </div>
-                    <span className={this.props.infoButton}>
+                    { this.props.favourite==="true" ? <></> : <span className={this.props.infoButton}>
                       {/* Add location to dashboard icon */}
                       <FontAwesomeIcon style={{ color: '#476985',
                       cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 
                       this.props.onAdd(city_weather.city, city_weather.id);}} size="lg" />
-                    </span>
+                    </span>}
                   </div>
                 </div>
               </div>

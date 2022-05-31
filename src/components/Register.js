@@ -39,7 +39,7 @@ function Register({ setToken, setUser, setMessage }){
     })
     .catch(err => {
         console.log(err);
-        setMessage("Invalid");
+        setMessage("Username or Email already exists for account");
     });
 
     }
@@ -48,15 +48,15 @@ function Register({ setToken, setUser, setMessage }){
             <form onSubmit={handleRegisterSubmit}>
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Email Address</label>
-                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputUser1">Username</label>
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} className="form-control" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Enter username" />
+                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} className="form-control" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Enter username" required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Password</label>
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"s required />
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
             </form>
