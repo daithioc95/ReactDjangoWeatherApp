@@ -12,7 +12,7 @@ function Navbar({ setToken, setUser, setMessage }) {
           { localStorage.getItem('user') ? 
             <>
             <Logout setToken={setToken} setUser={setUser} setMessage={setMessage} />
-            <Link to='/Favoutites'>Favoutites</Link>
+            <Link to='/Favourites'>Favourites</Link>
             </>
           : 
           <><Link to='/Login'>Login</Link>

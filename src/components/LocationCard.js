@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import FontAwesome from 'react-fontawesome';
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ResultModal from './ResultModal';
+import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
@@ -11,6 +13,7 @@ class LocationCard extends React.Component {
     details : [],
 		city: "",
 		show: false,
+    isFav: false,
 	}
   
 	showModal = e => {
@@ -43,6 +46,17 @@ class LocationCard extends React.Component {
     clearTimeout(this.interval);
   }
 
+  setIsFav(id){
+    this.setState({
+      isFav: !this.state.isFav
+    });
+    console.log(id)
+    console.log(this.state.isFav)
+  }
+
+  // addToFav = e => {
+  // };
+
   render() {
     return(
       <div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
@@ -51,10 +65,11 @@ class LocationCard extends React.Component {
             <div className="container px-1 px-md-4 py-5 mx-auto">
               <div className="">
                 <div className="card">
+                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
                   <span className='text-right position-absolute remove-button'>
                     {/* Delete location icon */}
                     <FontAwesomeIcon style={{ color: 'red',
-                    cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} size="lg" />
+                    cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
                   </span>
                   <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                   <img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>

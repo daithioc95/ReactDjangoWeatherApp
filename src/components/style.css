@@ -137,3 +137,7 @@ form{
 .alert{
   margin-bottom: 0 !important;
 }
+
+.fav-item-icon{
+  color: yellow !important;
+}

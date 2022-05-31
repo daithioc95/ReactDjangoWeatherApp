@@ -7,6 +7,7 @@ import { Route } from "react-router-dom";
 import Login from './components/Login';
 import HeroImage from './components/HeroImage';
 import Register from './components/Register';
+import Favourites from './components/Favourites'
 
 function App() {
 
@@ -37,16 +38,19 @@ function App() {
       <div>
 
         <Navbar setToken={setToken} setUser={setUser} setMessage={setMessage} />
-    {message &&
-        <div class="alert alert-primary" role="alert">
-        {message}
-      </div>
-      }
+        {message &&
+          <div class="alert alert-primary" role="alert">
+            {message}
+          </div>
+        }
         <Route path="/Login">
           <Login setToken={setToken} setUser={setUser} setMessage={setMessage} />
         </Route>
         <Route path="/Register">
           <Register setToken={setToken} setUser={setUser} setMessage={setMessage} />
+        </Route>
+        <Route path="/Favourites">
+          <Favourites />
         </Route>
         <Route path="/" exact component={HeroImage}/>
         <Route path="/" exact component={WeatherTable}/>
