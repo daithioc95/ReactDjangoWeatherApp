@@ -54,7 +54,7 @@ class LocationCard extends React.Component {
       const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
       this.interval = setTimeout(() => {
           // API call which passes location and gets weather data
-          axios.get(`${API_ENDPOINT}getuserfavs/`, 
+          axios.post(`${API_ENDPOINT}getuserfavs/`, 
           { params: { id: id, state: this.state.isFav, user: localStorage.getItem('user') } })
               .then((res) => {
                 console.log(res)

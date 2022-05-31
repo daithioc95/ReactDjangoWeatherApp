@@ -11,8 +11,32 @@ from decouple import config
 env = environ.Env()
 
 class GetUserFavourites(APIView):
-    def get(self, request):
-        print(request)
+    # Function to add or remove items from favourites
+    def post(self, request):
+        username = request.data['params']['user']
+        locationId = request.data['params']['id']
+        AlreadyStored = UserFavourites.objects.all().filter(user=username)
+        if AlreadyStored.count() == 0:
+            # Create
+            # FavObj = UserFavourites.objects.create(user=username, favourites = {'id': locationId})
+            print("create")
+        else:
+            # Update
+            if request.data['params']['state']==True:
+                print("Add")
+                # FavObj = UserFavourites.objects.update(user=username, favourites = {'id': locationId})
+                print(FavObj)
+                # FavObj.save()
+            else:
+                print("Remove")
         return Response("usefaves")
+
+    # Function to get users locations
+    def get(self, request):
+        username = request.query_params.get('user')
+        userFavIds = UserFavourites.objects.all().filter(user=username)
+        print(userFavIds[0])
+        return Response("usefaves")
+    
 
     

@@ -6,5 +6,5 @@ class UserFavourites(models.Model):
     favourites = JSONField()
     user = models.TextField()
 
-    def __str__(self):
-            return self.name
+    def __dict__(self):
+        return self.favourites
