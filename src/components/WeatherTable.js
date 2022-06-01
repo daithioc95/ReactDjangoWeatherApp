@@ -43,7 +43,7 @@ const WeatherTable = () => {
           {/* Map all locations location cards */}
           <h1>Popular Locations</h1>
         {locations.map(location =>(
-          <LocationCard key = {location.id} location = {location.name} 
+          <LocationCard key = {location.id} id = {location.id} location = {location.name} 
           onDelete = {deleteLocation} />
         ))}
         {/* Map remaning slots with empty cards */}

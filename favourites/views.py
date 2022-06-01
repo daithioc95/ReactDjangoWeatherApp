@@ -18,7 +18,7 @@ class GetUserFavourites(APIView):
         AlreadyStored = UserFavourites.objects.all().filter(user=username)
         if AlreadyStored.count() == 0:
             # Create
-            # FavObj = UserFavourites.objects.create(user=username, favourites = {'id': locationId})
+            FavObj = UserFavourites.objects.create(user=username, favourites = {'id': [locationId]})
             print("create")
         else:
             # Update
@@ -34,9 +34,14 @@ class GetUserFavourites(APIView):
     # Function to get users locations
     def get(self, request):
         username = request.query_params.get('user')
-        userFavIds = UserFavourites.objects.all().filter(user=username)
-        print(userFavIds[0])
-        return Response("usefaves")
+        userFavObj = UserFavourites.objects.all().filter(user=username)
+        userFavIds = userFavObj[0].favourites['id']
+        userFavIdsDict = []
+        for x in userFavIds:
+            newFavourite = {'id' : x}
+            userFavIdsDict.append(newFavourite)
+        print(userFavIdsDict)
+        return Response(userFavIdsDict)
     
 
     

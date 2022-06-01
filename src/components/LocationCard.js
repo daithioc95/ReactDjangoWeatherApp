@@ -23,12 +23,13 @@ class LocationCard extends React.Component {
   };
 	
   componentDidMount() {
+    console.log(this.props.id)
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
     this.interval = setTimeout(() => {
       let data ;
       // API call which passes location and gets weather data
       axios.get(`${API_ENDPOINT}apisearchcall/`, 
-				{ params: { name: this.props.location, } })
+				{ params: { id: this.props.id, } })
           .then((res) => {
             data = res.data;
             this.setState({
