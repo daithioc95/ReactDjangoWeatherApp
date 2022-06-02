@@ -8,6 +8,7 @@ import Login from './components/Login';
 import HeroImage from './components/HeroImage';
 import Register from './components/Register';
 import Favourites from './components/Favourites'
+import CardTable from './components/CardTable';
 
 function App() {
 
@@ -24,14 +25,9 @@ function App() {
     console.log(localStorage.getItem('user'))
   }
 
-  // const checkStatus = () => {
-  //   setStatus(localStorage.getItem('status'));
-  // }
-
   useEffect(() => {
     checkToken();
     checkUser();
-    // setStatus();
   }, [token, user])
 
     return (
@@ -49,11 +45,13 @@ function App() {
         <Route path="/Register">
           <Register setToken={setToken} setUser={setUser} setMessage={setMessage} />
         </Route>
-        <Route path="/Favourites">
-          <Favourites />
+        <Route path="/Favourites" exact>
+          <CardTable type="Favourites" />
         </Route>
         <Route path="/" exact component={HeroImage}/>
-        <Route path="/" exact component={WeatherTable}/>
+        <Route path="/" exact>
+          <CardTable type="WeatherTable" />
+        </Route>
         <Footer />
       </div>
     );

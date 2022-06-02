@@ -5,31 +5,31 @@ import EmptyCards from './EmptyCards';
 import { useState } from 'react';
 import Login from './Login';
 
-const WeatherTable = (props) => {
-
-  // Preset locations
-  const [locations, setLocations] = useState(props.locationsData)
-  // Empty Card slots
-  const [emptyCards, setEmptyCards] = useState([1,1,1])
+class WeatherTableClass extends React.Component {
+  state = {
+    locations: this.props.locationsData,
+    emptyCards: [1,1,1]
+	}
+  
+  render(){
   // Delete specified location and feed empty card slot
   const deleteLocation = (id) => {
-    setLocations(locations.filter((location) => location.id !== id))
-    setEmptyCards([...emptyCards, 1])
+    this.setState({locations: this.state.locations.filter((location) => location.id !== id)})
+    this.setState({emptyCards: [...this.state.emptyCards, 1]})
   }
   const addLocation = (location, id) => {
     const newLocation = { "name": location, "id": id}
-    if (locations.findIndex(item => item.id === newLocation.id)!==-1) {
+    if (this.state.locations.findIndex(item => item.id === newLocation.id)!==-1) {
       alert("Location already on dashboard")
     }
-    else if(locations.length>=9){
+    else if(this.state.locations.length>=9){
       alert("Maximum number of locations on dashboard, please remove and add again")
     }
     else{
-      setLocations([...locations, newLocation])
-      emptyCards.pop(1)
+      this.setState({locations: [...this.state.locations, newLocation]})
+      this.setState({emptyCards: this.state.emptyCards.pop(1)})
     }
   }
-
   return (
     <div className='container-fluid weather-table-container'>
       <div className='container'>
@@ -37,12 +37,12 @@ const WeatherTable = (props) => {
         <div className='row'>
           {/* Map all locations location cards */}
           <h1>Popular Locations</h1>
-        {locations.map(location =>(
+        {this.state.locations.map(location =>(
           <LocationCard key = {location.id} id = {location.id} location = {location.name} 
           onDelete = {deleteLocation} />
         ))}
         {/* Map remaning slots with empty cards */}
-        {[...Array(emptyCards.length)].map(() => ( 
+        {[...Array(this.state.emptyCards.length)].map(() => ( 
           <EmptyCards key={Math.random()} />
         ))}
         </div>
@@ -52,5 +52,5 @@ const WeatherTable = (props) => {
     </div>
   );
 }
-
-export default WeatherTable
+}
+export default WeatherTableClass
