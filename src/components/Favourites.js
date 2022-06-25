@@ -16,7 +16,8 @@ const Favourites = (props) => {
           // added so that we can return a list only for homepage
           favoutitesPage: "true" } })
           console.log(data);
-          setFavourites(data);
+          setFavourites(data)
+          console.log(favourites);
     };
     useEffect(() => {
       getData();

@@ -45,6 +45,7 @@ class GetUserFavourites(APIView):
         userFavIdsDict = []
         for x in userFavIds:
             if request.query_params.get('favoutitesPage')=="true":
+                print("favoutitesPage")
                 # why this format so it's easier to map to favourites page
                 newFavourite = {'id' : x}
                 userFavIdsDict.append(newFavourite)

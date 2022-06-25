@@ -77,7 +77,7 @@ class LocationCard extends React.Component {
             <div className="container px-1 px-md-4 py-5 mx-auto">
               <div className="">
                 <div className="card">
-                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
+                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.props.favourite ? 'fav-item-icon' : ''} />
                   
                     {/* Delete location icon */}
                     { this.props.favourite==="true" ? <></>
