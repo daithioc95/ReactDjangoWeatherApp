@@ -2,6 +2,7 @@ import requests
 import environ
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from sqlalchemy import true
 from . serializer import *
 from dotenv import load_dotenv
 load_dotenv()
@@ -24,7 +25,11 @@ class GetUserFavourites(APIView):
             # Update
             if request.data['params']['state']==True:
                 print("Add")
-                # FavObj = UserFavourites.objects.update(user=username, favourites = {'id': locationId})
+                StoredIds = AlreadyStored[0].favourites['id']
+                StoredIds.append(locationId)
+                print(StoredIds)
+                # Next Step: append the new object to AlreadyStored and update in db :)
+                FavObj = UserFavourites.objects.update(user=username, favourites = StoredIds)
                 print(FavObj)
                 # FavObj.save()
             else:
@@ -35,11 +40,17 @@ class GetUserFavourites(APIView):
     def get(self, request):
         username = request.query_params.get('user')
         userFavObj = UserFavourites.objects.all().filter(user=username)
+        # I need to ensure all id's are appended to the json id key
         userFavIds = userFavObj[0].favourites['id']
         userFavIdsDict = []
         for x in userFavIds:
-            newFavourite = {'id' : x}
-            userFavIdsDict.append(newFavourite)
+            if request.query_params.get('favoutitesPage')=="true":
+                # why this format so it's easier to map to favourites page
+                newFavourite = {'id' : x}
+                userFavIdsDict.append(newFavourite)
+            else:
+                newFavourite = x
+                userFavIdsDict.append(newFavourite)
         print(userFavIdsDict)
         return Response(userFavIdsDict)
     

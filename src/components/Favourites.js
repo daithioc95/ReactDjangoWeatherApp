@@ -12,7 +12,10 @@ const Favourites = (props) => {
     const getData = async () => {
       const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
       const { data } = await axios.get(`${API_ENDPOINT}getuserfavs/`, 
-          { params: { user: localStorage.getItem('user') } })
+          { params: { user: localStorage.getItem('user'),
+          // added so that we can return a list only for homepage
+          favoutitesPage: "true" } })
+          console.log(data);
           setFavourites(data);
     };
     useEffect(() => {
