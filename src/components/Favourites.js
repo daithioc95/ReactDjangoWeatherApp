@@ -31,7 +31,7 @@ const Favourites = (props) => {
               <h1>{username}'s Favourites</h1>
               {/* <h1>{this.state.favourites}</h1> */}
               {favourites.map(favourite =>(
-            <LocationCard key = {favourite.id} id = {favourite.id} favourite="true" />
+            <LocationCard key = {favourite.id} id = {favourite.id} favourite={true} />
             ))}
             </div>
           </div>

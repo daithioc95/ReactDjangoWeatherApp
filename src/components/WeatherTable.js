@@ -17,7 +17,7 @@ const WeatherTable = (props) => {
     setEmptyCards([...emptyCards, 1])
   }
   const addLocation = (location, id) => {
-    const newLocation = { "name": location, "id": id}
+    const newLocation = { "name": location, "id": id }
     if (locations.findIndex(item => item.id === newLocation.id)!==-1) {
       alert("Location already on dashboard")
     }
@@ -39,7 +39,7 @@ const WeatherTable = (props) => {
           <h1>Popular Locations</h1>
         {locations.map(location =>(
           <LocationCard key = {location.id} id = {location.id} location = {location.name} 
-          onDelete = {deleteLocation} />
+          onDelete = {deleteLocation} favourite={location.favLocation} />
         ))}
         {/* Map remaning slots with empty cards */}
         {[...Array(emptyCards.length)].map(() => ( 
