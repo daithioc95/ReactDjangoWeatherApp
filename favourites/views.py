@@ -19,17 +19,18 @@ class GetUserFavourites(APIView):
         AlreadyStored = UserFavourites.objects.all().filter(user=username)
         if AlreadyStored.count() == 0:
             # Create
-            FavObj = UserFavourites.objects.create(user=username, favourites = {'id': [locationId]})
+            FavObj = UserFavourites.objects.create(user=username, favourites = {"id": [locationId]})
             print("create")
         else:
             # Update
             if request.data['params']['state']==True:
                 print("Add")
-                StoredIds = AlreadyStored[0].favourites['id']
+                print(AlreadyStored[0].favourites["id"])
+                StoredIds = AlreadyStored[0].favourites["id"]
                 StoredIds.append(locationId)
                 print(StoredIds)
                 # Append the new object to AlreadyStored and update in db :)
-                FavObj = UserFavourites.objects.update(user=username, favourites = StoredIds)
+                FavObj = UserFavourites.objects.update(user=username, favourites = {"id": StoredIds})
                 print(FavObj)
             else:
                 print("Remove")
