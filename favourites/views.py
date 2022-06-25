@@ -2,7 +2,7 @@ import requests
 import environ
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from sqlalchemy import true
+# from sqlalchemy import true
 from . serializer import *
 from dotenv import load_dotenv
 load_dotenv()
