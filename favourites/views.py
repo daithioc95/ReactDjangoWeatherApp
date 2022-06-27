@@ -43,6 +43,9 @@ class GetUserFavourites(APIView):
         # I need to ensure all id's are appended to the json id key
         print("here is the count")
         print(userFavObj)
+        print(userFavObj[0])
+        print(userFavObj[0].favourites)
+        print(userFavObj[0].favourites["id"])
         print(len(userFavObj[0].favourites["id"]))
         if len(userFavObj[0].favourites["id"]) == 0:
             return Response("No Favourites")
