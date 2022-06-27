@@ -47,7 +47,7 @@ class LocationCard extends React.Component {
     clearTimeout(this.interval);
   }
 
-  setIsFav(id){
+  setIsFav = () => {
     this.setState({
       isFav: !this.state.isFav
     });
@@ -56,7 +56,7 @@ class LocationCard extends React.Component {
       this.interval = setTimeout(() => {
           // API call which passes location and gets weather data
           axios.post(`${API_ENDPOINT}getuserfavs/`, 
-          { params: { id: id, add: this.state.isFav, user: localStorage.getItem('user') } })
+          { params: { id: this.props.id, add: this.state.isFav, user: localStorage.getItem('user') } })
               .then((res) => {
                 console.log(res)
                 })
@@ -77,7 +77,7 @@ class LocationCard extends React.Component {
             <div className="container px-1 px-md-4 py-5 mx-auto">
               <div className="">
                 <div className="card">
-                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
+                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
                   
                     {/* Delete location icon */}
                     { this.props.favourite==="true" ? <></>
@@ -102,7 +102,8 @@ class LocationCard extends React.Component {
           )
         )}
         {/* Mosal to show when more info selected */}
-        <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} />
+        <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} />
+        {/* updateFave={this.setIsFav(this.props.id)} */} 
       </div>
     );
   }

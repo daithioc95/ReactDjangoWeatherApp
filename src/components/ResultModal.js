@@ -8,18 +8,17 @@ import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
 
 class ResultModal extends React.Component {
   state = {
-    isFav: false,
+    isFav: this.props.favourited,
 	}
   onClose = e => {
     this.props.onClose && this.props.onClose(e);
   };
 
-  setIsFav(id){
+  HighlightBookmark = () => {
+    this.props.updateFave()
     this.setState({
       isFav: !this.state.isFav
     });
-    console.log(id)
-    console.log(this.state.isFav)
   }
 
   render() {
@@ -41,7 +40,7 @@ class ResultModal extends React.Component {
                     // do not close modal if anything inside modal content is clicked
                     e.stopPropagation();
                   }}>
-                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav(city_weather.id)} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
+                    <BsFillBookmarkStarFill onClick = {this.HighlightBookmark} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
                     <span className='text-right position-absolute remove-button'>
                       <FontAwesomeIcon style={{ color: 'red',
                       cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
