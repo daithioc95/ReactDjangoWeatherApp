@@ -67,7 +67,7 @@ class CardTable extends React.Component {
                 return null; //Or some other replacement component or markup
              }
         if(this.props.type==="WeatherTable")
-            return <WeatherTable locationsData={this.state.WeatherLocations} />;
+            return <WeatherTable locationsData={this.state.WeatherLocations} favouritesList={this.state.favourites} />;
         if(this.props.type==="Favourites")
             return <Favourites />;
   }};

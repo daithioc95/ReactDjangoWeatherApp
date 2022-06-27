@@ -33,7 +33,7 @@ const WeatherTable = (props) => {
   return (
     <div className='container-fluid weather-table-container'>
       <div className='container'>
-        <SearchBar onAdd = {addLocation} />
+        <SearchBar onAdd = {addLocation} favouriteList={props.favouritesList} />
         <div className='row'>
           {/* Map all locations location cards */}
           <h1>Popular Locations</h1>
