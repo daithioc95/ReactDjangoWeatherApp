@@ -24,17 +24,16 @@ class GetUserFavourites(APIView):
             print("create")
         else:
             # Update
-            if request.data['params']['state']==True:
-                print("Add")
-                print(AlreadyStored[0].favourites["id"])
-                StoredIds = AlreadyStored[0].favourites["id"]
+            print(AlreadyStored[0].favourites["id"])
+            StoredIds = AlreadyStored[0].favourites["id"]
+            if request.data['params']['add']==True:
                 StoredIds.append(locationId)
-                print(StoredIds)
-                # Append the new object to AlreadyStored and update in db :)
-                FavObj = UserFavourites.objects.update(user=username, favourites = {"id": StoredIds})
-                print(FavObj)
             else:
-                print("Remove")
+                StoredIds.remove(locationId)
+            print(StoredIds)
+            # Append the new object to AlreadyStored and update in db :)
+            FavObj = UserFavourites.objects.update(user=username, favourites = {"id": StoredIds})
+            print(FavObj)
         return Response("usefaves")
 
     # Function to get users locations

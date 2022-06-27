@@ -56,7 +56,7 @@ class LocationCard extends React.Component {
       this.interval = setTimeout(() => {
           // API call which passes location and gets weather data
           axios.post(`${API_ENDPOINT}getuserfavs/`, 
-          { params: { id: id, state: this.state.isFav, user: localStorage.getItem('user') } })
+          { params: { id: id, add: this.state.isFav, user: localStorage.getItem('user') } })
               .then((res) => {
                 console.log(res)
                 })
