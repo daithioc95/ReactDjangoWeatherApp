@@ -20,31 +20,42 @@ class CardTable extends React.Component {
         }
 
         componentDidMount(){
-            const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
-            this.interval = setTimeout(() => {
-                    axios.get(`${API_ENDPOINT}getuserfavs/`, 
-                        { params: { user: localStorage.getItem('user'),
-                        // added so that we can return a list only for homepage
-                        favoutitesPage: "false" } })
-                        .then(res => {
-                        const favouritesData = res.data;
-                        
-                        this.setState({ favourites: favouritesData }, () => {
-                            console.log(this.state);
-                            for(var i=0; i < this.state.WeatherLocations.length; i++){
-                                let newWeatherLocations = this.state.WeatherLocations
-                                console.log(this.state.favourites)
-                                if(this.state.favourites.includes(newWeatherLocations[i].id)){
-                                    newWeatherLocations[i].favLocation=true;
-                                    console.log("newWeatherLocations")
-                                    console.log(newWeatherLocations)
-                                    this.setState({ WeatherLocations: newWeatherLocations, callMade:true })
-                                }
+            if(localStorage.getItem('user')){
+                const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
+                this.interval = setTimeout(() => {
+                        axios.get(`${API_ENDPOINT}getuserfavs/`, 
+                            { params: { user: localStorage.getItem('user'),
+                            // added so that we can return a list only for homepage
+                            favoutitesPage: "false" } })
+                            .then(res => {
+                            if(res.data==="No Favourites"){
+                                this.setState({ callMade:true })
                             }
-                          }); 
-                        }
-                        )
-                    }, .1);
+                            else{
+                                const favouritesData = res.data;
+                                
+                                this.setState({ favourites: favouritesData }, () => {
+                                    console.log(this.state);
+                                    for(var i=0; i < this.state.WeatherLocations.length; i++){
+                                        let newWeatherLocations = this.state.WeatherLocations
+                                        console.log(this.state.favourites)
+                                        if(this.state.favourites.includes(newWeatherLocations[i].id)){
+                                            newWeatherLocations[i].favLocation=true;
+                                            console.log("newWeatherLocations")
+                                            console.log(newWeatherLocations)
+                                            this.setState({ WeatherLocations: newWeatherLocations, callMade:true })
+                                        }
+                                    }
+                                  }); 
+    
+                            }
+                            }
+                            )
+                        }, .1);
+            }
+            else{
+                this.setState({ callMade:true })
+            }
         }
 
         componentWillUnmount() {

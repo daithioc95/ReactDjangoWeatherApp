@@ -1,3 +1,4 @@
+from distutils.log import error
 import requests
 import environ
 from rest_framework.response import Response
@@ -41,19 +42,26 @@ class GetUserFavourites(APIView):
         username = request.query_params.get('user')
         userFavObj = UserFavourites.objects.all().filter(user=username)
         # I need to ensure all id's are appended to the json id key
-        userFavIds = userFavObj[0].favourites['id']
-        userFavIdsDict = []
-        for x in userFavIds:
-            if request.query_params.get('favoutitesPage')=="true":
-                print("favoutitesPage")
-                # why this format so it's easier to map to favourites page
-                newFavourite = {'id' : x}
-                userFavIdsDict.append(newFavourite)
-            else:
-                newFavourite = x
-                userFavIdsDict.append(newFavourite)
-        print(userFavIdsDict)
-        return Response(userFavIdsDict)
+        print("here is the count")
+        print(len(userFavObj[0].favourites["id"]))
+        if len(userFavObj[0].favourites["id"]) == 0:
+            return Response("No Favourites")
+        try:
+            userFavIds = userFavObj[0].favourites['id']
+            userFavIdsDict = []
+            for x in userFavIds:
+                if request.query_params.get('favoutitesPage')=="true":
+                    print("favoutitesPage")
+                    # why this format so it's easier to map to favourites page
+                    newFavourite = {'id' : x}
+                    userFavIdsDict.append(newFavourite)
+                else:
+                    newFavourite = x
+                    userFavIdsDict.append(newFavourite)
+            print(userFavIdsDict)
+            return Response(userFavIdsDict)
+        except IndexError:
+            return Response("No Favourites")
     
 
     
