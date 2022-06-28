@@ -47,7 +47,11 @@ class GetUserFavourites(APIView):
         print(userFavObj[0])
         print(userFavObj[0].favourites)
         print(type(userFavObj[0].favourites))
-        jsonDict = json.loads(userFavObj[0].favourites)
+        # When in production, convert string array to json
+        if 'DATABASE_URL' in os.environ:
+            jsonDict = json.loads(userFavObj[0].favourites)
+        else:
+            jsonDict = userFavObj[0].favourites
         print(jsonDict['id'])
         for i in jsonDict['id']:
             print(i)
