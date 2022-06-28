@@ -9,14 +9,26 @@ import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
-  state = {
-    details : [],
-		city: "",
-		show: false,
-    isFav: this.props.favourite,
-	}
+  constructor(props) {
+    super(props);
+    this.state ={
+      details : [],
+      city: "",
+      show: this.props.fromSearch,
+      isFav: this.props.favourite,
+    }
+  }
+
+
+  // state = {
+  //   details : [],
+	// 	city: "",
+	// 	show: this.props.fromSearch,
+  //   isFav: this.props.favourite,
+	// }
   
 	showModal = e => {
+    console.log("triggered")
     this.setState({
       show: !this.state.show
     });
@@ -36,7 +48,7 @@ class LocationCard extends React.Component {
               details : data,
               image: data['base'],
               city: "",
-              show: false,
+              // show: this.props.fromSearch,
             });
             })
             .catch((err) => {console.log('error');});
@@ -70,42 +82,49 @@ class LocationCard extends React.Component {
 
 
   render() {
-    return(
-      <div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
-        {this.state.details.map((city_weather, id) => (
-          <div key={id}>
-            <div className="container px-1 px-md-4 py-5 mx-auto">
-              <div className="">
-                <div className="card">
-                    <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
-                  
-                    {/* Delete location icon */}
-                    { this.props.favourite==="true" ? <></>
-          : 
-          <span className='text-right position-absolute remove-button'><FontAwesomeIcon style={{ color: 'red',
-                    cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
-                  </span> }
+    if(this.props.fromSearch){
+      return(
+        <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} dashAdd={true} onAdd={this.props.onAdd} />
+      )
+    }
+    else{
+      return(
+        <div className='col-lg-4 col-md-6 col-sm-1 locationCards'>
+          {this.state.details.map((city_weather, id) => (
+            <div key={id}>
+              <div className="container px-1 px-md-4 py-5 mx-auto">
+                <div className="">
+                  <div className="card">
+                      <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
                     
-                  <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
-                  <img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
-                  <p className="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>
-                  <h1 className="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
-                  <span className='info-button'>
-                    {/* More info mosal icon */}
-                    <FontAwesomeIcon style={{ color: '#6582BC',
-                    cursor: 'pointer' }} icon={faInfoCircle} onClick = {this.showModal} size="lg" />
-                  </span>
+                      {/* Delete location icon */}
+                      { this.props.favourite==="true" ? <></>
+            : 
+            <span className='text-right position-absolute remove-button'><FontAwesomeIcon style={{ color: 'red',
+                      cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
+                    </span> }
+                      
+                    <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
+                    <img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
+                    <p className="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>
+                    <h1 className="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
+                    <span className='info-button'>
+                      {/* More info mosal icon */}
+                      <FontAwesomeIcon style={{ color: '#6582BC',
+                      cursor: 'pointer' }} icon={faInfoCircle} onClick = {this.showModal} size="lg" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          )
-        )}
-        {/* Mosal to show when more info selected */}
-        <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} />
-        {/* updateFave={this.setIsFav(this.props.id)} */} 
-      </div>
-    );
+            )
+          )}
+          {/* Mosal to show when more info selected */}
+          <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} />
+          {/* updateFave={this.setIsFav(this.props.id)} */} 
+        </div>
+      );
+    }
   }
 }
 

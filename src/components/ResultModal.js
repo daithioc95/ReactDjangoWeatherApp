@@ -59,8 +59,8 @@ class ResultModal extends React.Component {
                         <h5 className="ml-auto mr-4"><b>Wind:</b> {city_weather.windspeed}kn</h5>
                       </div>
                     </div>
-                    {/* Reversed if else below */}
-                    { this.props.favourite==="true" ?  <span className={this.props.infoButton}>
+                    {/* Reversed if else below - updating to dashAdd to differentiate from favourites */}
+                    { this.props.dashAdd ?  <span className={this.props.infoButton}>
                       {/* Add location to dashboard icon */}
                       <FontAwesomeIcon style={{ color: '#476985',
                       cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 

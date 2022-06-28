@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ResultModal from './ResultModal';
+import LocationCard from './LocationCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // notes for improvements to adding to favourites, pull and invisible location card upon search? so adding to favourites can be handled?
@@ -45,6 +46,8 @@ class SearchBar extends React.Component {
           show: true,
           callMade: false,
         });
+        console.log("data")
+        console.log(data[0]['id'])
         // check if id in favourite list
           if(this.props.favouriteList.includes(data[0]['id'])){
               console.log("fave")
@@ -66,33 +69,34 @@ class SearchBar extends React.Component {
     .catch((err) => {console.log('error');});
   };
 
-  setIsFav = () => {
-    this.setState({
-      isFav: !this.state.isFav
-    });
-    if(localStorage.getItem('user')){
-      const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
-      this.interval = setTimeout(() => {
-          // API call which passes location and gets weather data
-          axios.post(`${API_ENDPOINT}getuserfavs/`, 
-          { params: { id: this.state.details[0]['id'], add: this.state.isFav, user: localStorage.getItem('user') } })
-              .then((res) => {
-                console.log(res)
-                })
-                .catch((err) => {console.log('error');});
-        }, .1);
-    }
-    else{
-      alert("Please Login or register to save a favourite")
-    }
-  }
+  // setIsFav = () => {
+  //   this.setState({
+  //     isFav: !this.state.isFav
+  //   });
+  //   if(localStorage.getItem('user')){
+  //     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
+  //     this.interval = setTimeout(() => {
+  //         // API call which passes location and gets weather data
+  //         axios.post(`${API_ENDPOINT}getuserfavs/`, 
+  //         { params: { id: this.state.details[0]['id'], add: this.state.isFav, user: localStorage.getItem('user') } })
+  //             .then((res) => {
+  //               console.log(res)
+  //               })
+  //               .catch((err) => {console.log('error');});
+  //       }, .1);
+  //   }
+  //   else{
+  //     alert("Please Login or register to save a favourite")
+  //   }
+  // }
 
 
   render() {
     if(this.state.callMade){
       return (
         <div>
-      <ResultModal favourited = {this.state.isFav} infoButton="info-button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details}  updateFave={this.setIsFav} />
+        <LocationCard key = {this.state.details[0]['id']} id = {this.state.details[0]['id']} location = {this.state.details[0]['name']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
+      {/* <ResultModal favourited = {this.state.isFav} infoButton="info-button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details}  updateFave={this.setIsFav} /> */}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
             <input type="text" className="form-control" 
                                 placeholder="Enter City name"

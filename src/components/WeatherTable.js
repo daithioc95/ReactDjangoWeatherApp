@@ -39,7 +39,7 @@ const WeatherTable = (props) => {
           <h1>Popular Locations</h1>
         {locations.map(location =>(
           <LocationCard key = {location.id} id = {location.id} location = {location.name} 
-          onDelete = {deleteLocation} favourite={location.favLocation} />
+          onDelete = {deleteLocation} favourite={location.favLocation} fromSearch={false} />
         ))}
         {/* Map remaning slots with empty cards */}
         {[...Array(emptyCards.length)].map(() => ( 
