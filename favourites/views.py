@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 from decouple import config 
+import json
 
 env = environ.Env()
 
@@ -41,11 +42,15 @@ class GetUserFavourites(APIView):
         username = request.query_params.get('user')
         userFavObj = UserFavourites.objects.all().filter(user=username)
         # I need to ensure all id's are appended to the json id key
+        userFavObj = json.loads(userFavObj)
         print("here is the count")
         print(userFavObj)
         print(userFavObj[0])
         print(userFavObj[0].favourites)
         print(userFavObj[0].favourites['id'])
+        for i in userFavObj[0].favourites['id']:
+            print(i)
+        print(type(userFavObj[0].favourites))
         print(len(userFavObj[0].favourites['id']))
         if len(userFavObj[0].favourites['id']) == 0:
             return Response("No Favourites")
