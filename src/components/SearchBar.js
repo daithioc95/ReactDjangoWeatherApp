@@ -8,12 +8,25 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 // issue right now is that bookmark updating from result data is not aligned with table
 
 class SearchBar extends React.Component {
-  state = {
-    city: "",
-    show: false,
-    details: [],
-    isFav:false,
-  };
+  constructor(props){
+    super(props)
+    let dashList = []
+          for(var i=0; i < this.props.dashLocations.length; i++){
+            dashList.push(this.props.dashLocations[i]['id'])
+            console.log(this.props.dashLocations[i]['id'])
+          }
+
+          this.state = {
+            city: "",
+            show: false,
+            details: [],
+            isFav:false,
+            dashLocs:dashList,
+            onDash:false,
+          };
+  }
+    
+
 
   showModal = e => {
     this.setState({
@@ -36,6 +49,19 @@ class SearchBar extends React.Component {
     { params: { name: this.state.city, } })
     .then((res) => {
       data = res.data;
+      console.log(this.props.dashLocations)
+      // extract dash Ids to list
+      if(this.state.dashLocs.includes(data[0]['id'])){
+        console.log(this.state.dashLocs)
+        console.log("on dash")
+        this.setState({ onDash:true })
+      }
+      else{
+        console.log(this.state.dashLocs)
+        console.log("not on dash")
+        this.setState({ onDash:false })
+      }
+      
       console.log(this.props.favouriteList)
       console.log(this.props.favouriteList.length)
       console.log(data[0]['id'])
@@ -95,7 +121,7 @@ class SearchBar extends React.Component {
     if(this.state.callMade){
       return (
         <div>
-        <LocationCard key = {this.state.details[0]['id']} id = {this.state.details[0]['id']} location = {this.state.details[0]['name']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
+        <LocationCard key = {this.state.details[0]['id']} id = {this.state.details[0]['id']} location = {this.state.details[0]['name']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} onDash={this.state.onDash} />
       {/* <ResultModal favourited = {this.state.isFav} infoButton="info-button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details}  updateFave={this.setIsFav} /> */}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
             <input type="text" className="form-control" 

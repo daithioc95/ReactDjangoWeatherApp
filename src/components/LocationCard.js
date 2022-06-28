@@ -84,7 +84,7 @@ class LocationCard extends React.Component {
   render() {
     if(this.props.fromSearch){
       return(
-        <ResultModal infoButton="info-button-loc" onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} dashAdd={true} onAdd={this.props.onAdd} />
+        <ResultModal infoButton={this.props.onDash ? "info-button-loc" : "info-button"} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} dashAdd={true} onAdd={this.props.onAdd} />
       )
     }
     else{
