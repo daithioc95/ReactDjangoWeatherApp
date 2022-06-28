@@ -42,12 +42,13 @@ class GetUserFavourites(APIView):
         username = request.query_params.get('user')
         userFavObj = UserFavourites.objects.all().filter(user=username)
         # I need to ensure all id's are appended to the json id key
-        userFavObj = json.loads(userFavObj)
         print("here is the count")
         print(userFavObj)
         print(userFavObj[0])
         print(userFavObj[0].favourites)
-        print(userFavObj[0].favourites['id'])
+        print(type(userFavObj[0].favourites))
+        jsonDict = json.loads(userFavObj[0].favourites)
+        print(jsonDict['id'])
         for i in userFavObj[0].favourites['id']:
             print(i)
         print(type(userFavObj[0].favourites))
