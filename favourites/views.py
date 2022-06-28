@@ -49,14 +49,14 @@ class GetUserFavourites(APIView):
         print(type(userFavObj[0].favourites))
         jsonDict = json.loads(userFavObj[0].favourites)
         print(jsonDict['id'])
-        for i in userFavObj[0].favourites['id']:
+        for i in jsonDict['id']:
             print(i)
-        print(type(userFavObj[0].favourites))
-        print(len(userFavObj[0].favourites['id']))
-        if len(userFavObj[0].favourites['id']) == 0:
+        # print(type(userFavObj[0].favourites))
+        print(len(jsonDict['id']))
+        if len(jsonDict['id']) == 0:
             return Response("No Favourites")
         try:
-            userFavIds = userFavObj[0].favourites['id']
+            userFavIds = jsonDict['id']
             userFavIdsDict = []
             for x in userFavIds:
                 if request.query_params.get('favoutitesPage')=="true":
