@@ -16,6 +16,7 @@ class LocationCard extends React.Component {
       city: "",
       show: this.props.fromSearch,
       isFav: this.props.favourite,
+      dashSearchId: this.props.dashSearchId,
     }
   }
 
@@ -35,13 +36,17 @@ class LocationCard extends React.Component {
   };
 	
   componentDidMount() {
-    console.log(this.props.id)
+    let CardId = this.props.id
+    if(CardId[0]==="X"){
+      this.showModal()
+      CardId = parseInt(CardId.slice(1))
+    }
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
     this.interval = setTimeout(() => {
       let data ;
       // API call which passes location and gets weather data
       axios.get(`${API_ENDPOINT}apisearchcall/`, 
-				{ params: { id: this.props.id, } })
+				{ params: { id: CardId, } })
           .then((res) => {
             data = res.data;
             this.setState({
@@ -60,6 +65,11 @@ class LocationCard extends React.Component {
   }
 
   setIsFav = () => {
+    let CardId = this.props.id
+    if(CardId[0]==="X"){
+      CardId = parseInt(CardId.slice(1))
+      console.log(CardId)
+    }
     this.setState({
       isFav: !this.state.isFav
     });
@@ -68,7 +78,7 @@ class LocationCard extends React.Component {
       this.interval = setTimeout(() => {
           // API call which passes location and gets weather data
           axios.post(`${API_ENDPOINT}getuserfavs/`, 
-          { params: { id: this.props.id, add: this.state.isFav, user: localStorage.getItem('user') } })
+          { params: { id: CardId, add: this.state.isFav, user: localStorage.getItem('user') } })
               .then((res) => {
                 console.log(res)
                 })
@@ -82,7 +92,7 @@ class LocationCard extends React.Component {
 
 
   render() {
-    if(this.props.fromSearch){
+    if(this.props.fromSearch && !this.props.onDash){
       return(
         <ResultModal infoButton={this.props.onDash ? "info-button-loc" : "info-button"} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} dashAdd={true} onAdd={this.props.onAdd} />
       )

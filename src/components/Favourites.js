@@ -25,7 +25,7 @@ const Favourites = (props) => {
       
     return (
         <div className='container-fluid weather-table-container'>
-        <SearchBar favourite="true" />
+        {/* <SearchBar favourite="true" /> */}
           <div className='container'>
             <div className='row'>
               <h1>{username}'s Favourites</h1>

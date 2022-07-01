@@ -18,6 +18,8 @@ class GetUserFavourites(APIView):
     def post(self, request):
         username = request.data['params']['user']
         locationId = request.data['params']['id']
+        print("type(locationId)")
+        print(type(locationId))
         AlreadyStored = UserFavourites.objects.all().filter(user=username)
         # Check if this logic works on live sit
         if AlreadyStored.count() == 0:

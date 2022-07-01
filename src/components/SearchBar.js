@@ -23,6 +23,7 @@ class SearchBar extends React.Component {
             isFav:false,
             dashLocs:dashList,
             onDash:false,
+            onDashId: 0,
           };
   }
     
@@ -55,6 +56,7 @@ class SearchBar extends React.Component {
         console.log(this.state.dashLocs)
         console.log("on dash")
         this.setState({ onDash:true })
+        this.props.searchedDashLocation(data[0]['id'])
       }
       else{
         console.log(this.state.dashLocs)
@@ -118,7 +120,7 @@ class SearchBar extends React.Component {
 
 
   render() {
-    if(this.state.callMade){
+    if(this.state.callMade && !this.state.onDash){
       return (
         <div>
         <LocationCard key = {this.state.details[0]['id']} id = {this.state.details[0]['id']} location = {this.state.details[0]['name']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} onDash={this.state.onDash} />
