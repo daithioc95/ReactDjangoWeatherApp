@@ -44,40 +44,41 @@ class GetUserFavourites(APIView):
 
     # Function to get users locations
     def get(self, request):
-        username = request.query_params.get('user')
-        userFavObj = UserFavourites.objects.all().filter(user=username)
-        # I need to ensure all id's are appended to the json id key
-        print("here is the count")
-        print(userFavObj)
-        print(userFavObj[0])
-        print(userFavObj[0].favourites)
-        print(type(userFavObj[0].favourites))
-        # When in production, convert string array to json
-        if 'DATABASE_URL' in os.environ:
-            jsonDict = json.loads(userFavObj[0].favourites)
-        else:
-            jsonDict = userFavObj[0].favourites
-        print(jsonDict['id'])
-        for i in jsonDict['id']:
-            print(i)
-        # print(type(userFavObj[0].favourites))
-        print(len(jsonDict['id']))
-        if len(jsonDict['id']) == 0:
-            return Response("No Favourites")
         try:
-            userFavIds = jsonDict['id']
-            userFavIdsDict = []
-            for x in userFavIds:
-                if request.query_params.get('favoutitesPage')=="true":
-                    print("favoutitesPage")
-                    # why this format so it's easier to map to favourites page
-                    newFavourite = {'id' : x}
-                    userFavIdsDict.append(newFavourite)
-                else:
-                    newFavourite = x
-                    userFavIdsDict.append(newFavourite)
-            print(userFavIdsDict)
-            return Response(userFavIdsDict)
+            username = request.query_params.get('user')
+            userFavObj = UserFavourites.objects.all().filter(user=username)
+            # I need to ensure all id's are appended to the json id key
+            print("here is the count")
+            print(userFavObj)
+            print(userFavObj[0])
+            print(userFavObj[0].favourites)
+            print(type(userFavObj[0].favourites))
+            # When in production, convert string array to json
+            if 'DATABASE_URL' in os.environ:
+                jsonDict = json.loads(userFavObj[0].favourites)
+            else:
+                jsonDict = userFavObj[0].favourites
+            print(jsonDict['id'])
+            for i in jsonDict['id']:
+                print(i)
+            # print(type(userFavObj[0].favourites))
+            print(len(jsonDict['id']))
+            if len(jsonDict['id']) == 0:
+                return Response("No Favourites")
+            else:
+                userFavIds = jsonDict['id']
+                userFavIdsDict = []
+                for x in userFavIds:
+                    if request.query_params.get('favoutitesPage')=="true":
+                        print("favoutitesPage")
+                        # why this format so it's easier to map to favourites page
+                        newFavourite = {'id' : x}
+                        userFavIdsDict.append(newFavourite)
+                    else:
+                        newFavourite = x
+                        userFavIdsDict.append(newFavourite)
+                print(userFavIdsDict)
+                return Response(userFavIdsDict)
         except IndexError:
             return Response("No Favourites")
     
