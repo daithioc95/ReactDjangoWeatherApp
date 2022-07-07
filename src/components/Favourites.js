@@ -15,22 +15,26 @@ const Favourites = (props) => {
           { params: { user: localStorage.getItem('user'),
           // added so that we can return a list only for homepage
           favoutitesPage: "true" } })
-          console.log(data);
-          setFavourites(data)
-          console.log(favourites);
+          if(data==="No Favourites"){
+            setFavourites(null)
+          }
+          else{
+            setFavourites(data)
+          }
     };
     useEffect(() => {
       getData();
     }, []);
       
-    return (
+   
+      return (
         <div className='container-fluid weather-table-container'>
         {/* <SearchBar favourite="true" /> */}
           <div className='container'>
             <div className='row'>
               <h1>{username}'s Favourites</h1>
               {/* <h1>{this.state.favourites}</h1> */}
-              {favourites.map(favourite =>(
+              {favourites===null ? <h3>No favourites saved, to add favourites here, click the bookmark icon</h3> : favourites.map(favourite =>(
             <LocationCard key = {favourite.id} id = {favourite.id} favourite={true} />
             ))}
             </div>
