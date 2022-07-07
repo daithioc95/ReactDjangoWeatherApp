@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 class EmptyCards extends React.Component {
   render() {
@@ -9,7 +11,7 @@ class EmptyCards extends React.Component {
             <div>
               <div className='empty-card card'>
                 <div className="hide">
-                  <h5>Use the serach bar to add a location here.</h5>
+                  <h5>Use the serach bar and the <FontAwesomeIcon icon={faPlusCircle} size="lg"/> icon to temporarily add a location here.</h5>
                 </div>
               </div>
             </div>

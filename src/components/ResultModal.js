@@ -11,6 +11,7 @@ class ResultModal extends React.Component {
     isFav: this.props.favourited,
 	}
   onClose = e => {
+    // maybe try removing component entirely from node?
     this.props.onClose && this.props.onClose(e);
   };
 

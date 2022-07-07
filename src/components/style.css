@@ -141,3 +141,9 @@ form{
 .fav-item-icon{
   color: yellow !important;
 }
+
+.alert{    width: 65%;
+  height: 40px;
+  left: 60%;
+  /* margin-bottom: 5px !important; */
+  padding: 1px !important;}

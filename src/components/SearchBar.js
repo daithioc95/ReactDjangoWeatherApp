@@ -24,6 +24,7 @@ class SearchBar extends React.Component {
             dashLocs:dashList,
             onDash:false,
             onDashId: 0,
+            dupeSearch: false,
           };
   }
     
@@ -43,6 +44,7 @@ class SearchBar extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
     let data ;
     // API call which passes location and gets weather data
@@ -67,6 +69,21 @@ class SearchBar extends React.Component {
       console.log(this.props.favouriteList)
       console.log(this.props.favouriteList.length)
       console.log(data[0]['id'])
+
+      try{
+        if(this.state.details[0]['city']===this.state.city){
+          this.setState({
+            details : data,
+            city: "",
+            show: true,
+            callMade: false,
+          });
+        }
+      }
+      catch(error){
+        console.log("calm down")
+      }
+
       if(data[0]['cod']===200){
         this.setState({
           details : data,
@@ -97,33 +114,12 @@ class SearchBar extends React.Component {
     .catch((err) => {console.log('error');});
   };
 
-  // setIsFav = () => {
-  //   this.setState({
-  //     isFav: !this.state.isFav
-  //   });
-  //   if(localStorage.getItem('user')){
-  //     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
-  //     this.interval = setTimeout(() => {
-  //         // API call which passes location and gets weather data
-  //         axios.post(`${API_ENDPOINT}getuserfavs/`, 
-  //         { params: { id: this.state.details[0]['id'], add: this.state.isFav, user: localStorage.getItem('user') } })
-  //             .then((res) => {
-  //               console.log(res)
-  //               })
-  //               .catch((err) => {console.log('error');});
-  //       }, .1);
-  //   }
-  //   else{
-  //     alert("Please Login or register to save a favourite")
-  //   }
-  // }
-
-
   render() {
-    if(this.state.callMade && !this.state.onDash){
       return (
         <div>
+          {this.state.callMade && !this.state.onDash ?
         <LocationCard key = {this.state.details[0]['id']} id = {this.state.details[0]['id']} location = {this.state.details[0]['name']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} onDash={this.state.onDash} />
+            : <></>}
       {/* <ResultModal favourited = {this.state.isFav} infoButton="info-button" onAdd={this.props.onAdd} onClose={this.showModal} show={this.state.show} resultData = {this.state.details}  updateFave={this.setIsFav} /> */}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
             <input type="text" className="form-control" 
@@ -139,25 +135,6 @@ class SearchBar extends React.Component {
           {/* Modal to show once location is searched */}
         </div>
       );
-    }
-    else{
-      return (
-        <div>
-      <form id='SearchBar' onSubmit={this.handleSubmit}>
-            <input type="text" className="form-control" 
-                                placeholder="Enter City name"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                                value={this.state.city} name="city"
-                                onChange={this.handleInput} />
-            <button className='btn'>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </form>
-          {/* Modal to show once location is searched */}
-        </div>
-      );
-    }
   }
 }
 

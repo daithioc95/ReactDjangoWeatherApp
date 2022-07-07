@@ -53,7 +53,7 @@ class LocationCard extends React.Component {
               details : data,
               image: data['base'],
               city: "",
-              // show: this.props.fromSearch,
+              show: this.props.fromSearch,
             });
             })
             .catch((err) => {console.log('error');});
