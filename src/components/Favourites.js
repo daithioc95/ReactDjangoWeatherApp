@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "./SearchBar";
 import LocationCard from "./LocationCard";
 import { useState, useEffect } from 'react';
 import axios from 'axios';

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import WeatherTable from './components/WeatherTable';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,7 +6,6 @@ import { Route } from "react-router-dom";
 import Login from './components/Login';
 import HeroImage from './components/HeroImage';
 import Register from './components/Register';
-import Favourites from './components/Favourites'
 import CardTable from './components/CardTable';
 
 function App() {

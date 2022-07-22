@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import SearchBar from './SearchBar';
 import LocationCard from './LocationCard';
 import EmptyCards from './EmptyCards';

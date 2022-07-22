@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Logout from './Logout';
-import { useEffect, useState } from 'react'
 
 function Navbar({ setToken, setUser, setMessage }) {
   console.log(localStorage.getItem('user'))
