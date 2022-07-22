@@ -4,14 +4,13 @@ import React from 'react';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faPlusCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
 
 class ResultModal extends React.Component {
   state = {
     isFav: this.props.favourited,
 	}
   onClose = e => {
-    // maybe try removing component entirely from node?
     this.props.onClose && this.props.onClose(e);
   };
 

@@ -2,10 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import FontAwesome from 'react-fontawesome';
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ResultModal from './ResultModal';
-import { BsFillBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
@@ -16,15 +15,8 @@ class LocationCard extends React.Component {
       city: "",
       show: this.props.fromSearch,
       isFav: this.props.favourite,
-      dashSearchId: this.props.dashSearchId,
     }
   }
-  // state = {
-  //   details : [],
-	// 	city: "",
-	// 	show: this.props.fromSearch,
-  //   isFav: this.props.favourite,
-	// }
   
 	showModal = e => {
     console.log("triggered")
@@ -34,9 +26,7 @@ class LocationCard extends React.Component {
   };
 	
   componentDidMount() {
-    // Multiple X's needed to recognise changes on duped searches
     if(this.props.onDash){
-      console.log('Dash Card Searched')
       this.showModal()
     }
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
@@ -51,7 +41,6 @@ class LocationCard extends React.Component {
               details : data,
               image: data['base'],
               city: "",
-              // show: this.props.fromSearch,
             });
             })
             .catch((err) => {console.log('error');});
@@ -64,13 +53,6 @@ class LocationCard extends React.Component {
 
   setIsFav = () => {
     let CardId = this.props.id
-    // if(CardId[0]==="X"){
-    //   CardId = parseInt(CardId.slice(1))
-    // }
-    // if(CardId[CardId.length-1]==="Y"){
-    //   CardId = CardId.replace(/Y/g, "");
-    //   CardId = Number(CardId)
-    // }
     this.setState({
       isFav: !this.state.isFav
     });
@@ -93,6 +75,7 @@ class LocationCard extends React.Component {
 
 
   render() {
+    // if from search and not on dash we need the modal only
     if(this.props.fromSearch && !this.props.onDash){
       return(
         <ResultModal infoButton={this.props.onDash ? "info-button-loc" : "info-button"} onClose={this.showModal} show={this.state.show} resultData = {this.state.details} favourited = {this.state.isFav} updateFave={this.setIsFav} dashAdd={true} onAdd={this.props.onAdd} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import WeatherTable from './WeatherTable'
-import WeatherTableClass from './WeatherTableClass'
 import Favourites from './Favourites'
 import axios from 'axios';
 
@@ -16,7 +15,6 @@ class CardTable extends React.Component {
             {"id": 1816670, "keyRef": 1816670},],
             favourites: [],
             callMade: null}
-            
         }
 
         componentDidMount(){
@@ -41,8 +39,6 @@ class CardTable extends React.Component {
                                         console.log(this.state.favourites)
                                         if(this.state.favourites.includes(newWeatherLocations[i].id)){
                                             newWeatherLocations[i].favLocation=true;
-                                            console.log("newWeatherLocations")
-                                            console.log(newWeatherLocations)
                                             this.setState({ WeatherLocations: newWeatherLocations, callMade:true })
                                         }
                                     }
