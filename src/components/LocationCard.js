@@ -19,8 +19,6 @@ class LocationCard extends React.Component {
       dashSearchId: this.props.dashSearchId,
     }
   }
-
-
   // state = {
   //   details : [],
 	// 	city: "",
@@ -36,24 +34,24 @@ class LocationCard extends React.Component {
   };
 	
   componentDidMount() {
-    let CardId = this.props.id
-    if(CardId[0]==="X"){
+    // Multiple X's needed to recognise changes on duped searches
+    if(this.props.onDash){
+      console.log('Dash Card Searched')
       this.showModal()
-      CardId = parseInt(CardId.slice(1))
     }
     const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";
     this.interval = setTimeout(() => {
       let data ;
       // API call which passes location and gets weather data
       axios.get(`${API_ENDPOINT}apisearchcall/`, 
-				{ params: { id: CardId, } })
+				{ params: { id: this.props.id, } })
           .then((res) => {
             data = res.data;
             this.setState({
               details : data,
               image: data['base'],
               city: "",
-              show: this.props.fromSearch,
+              // show: this.props.fromSearch,
             });
             })
             .catch((err) => {console.log('error');});
@@ -66,10 +64,13 @@ class LocationCard extends React.Component {
 
   setIsFav = () => {
     let CardId = this.props.id
-    if(CardId[0]==="X"){
-      CardId = parseInt(CardId.slice(1))
-      console.log(CardId)
-    }
+    // if(CardId[0]==="X"){
+    //   CardId = parseInt(CardId.slice(1))
+    // }
+    // if(CardId[CardId.length-1]==="Y"){
+    //   CardId = CardId.replace(/Y/g, "");
+    //   CardId = Number(CardId)
+    // }
     this.setState({
       isFav: !this.state.isFav
     });

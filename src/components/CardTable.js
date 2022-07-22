@@ -8,12 +8,12 @@ class CardTable extends React.Component {
     constructor(props) {
         super(props);
         this.state  = {
-            WeatherLocations: [{"id": 2988507}, 
-            {"id": 5128581}, 
-            {"id": 2643743},
-            {"id": 2147714},
-            {"id": 2950159},
-            {"id": 1816670},],
+            WeatherLocations: [{"id": 2988507, "keyRef": 2988507}, 
+            {"id": 5128581, "keyRef": 5128581}, 
+            {"id": 2643743, "keyRef": 2643743},
+            {"id": 2147714, "keyRef": 2147714},
+            {"id": 2950159, "keyRef": 2950159},
+            {"id": 1816670, "keyRef": 1816670},],
             favourites: [],
             callMade: null}
             
