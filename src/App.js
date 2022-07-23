@@ -46,7 +46,7 @@ function App() {
         <Route path="/Favourites" exact>
           <CardTable type="Favourites" />
         </Route>
-        <Route path="/" exact component={HeroImage}/>
+        {/* <Route path="/" exact component={HeroImage}/> */}
         <Route path="/" exact>
           <CardTable type="WeatherTable" />
         </Route>

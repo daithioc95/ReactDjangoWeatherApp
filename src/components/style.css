@@ -46,7 +46,9 @@ h1, h2, h5, p{
 }
 
 .card {
-  background-color: #C4E4FF !important;
+  /* background-color: #C4E4FF !important; */
+  background-image: url(../assets/cardBG.jpg);
+  background-size: cover;
   min-height: 250px;
   border-radius: 1.25rem !important;
   box-shadow: 0px 8px 16px 4px #9E9E9E;
@@ -91,13 +93,14 @@ h1, h2, h5, p{
   margin: 100px 0 100px 25%;
   display: flex;
   position: absolute;
-  top: 35%;
+  top: 10%;
+  /* top: 35%; */
 }
-@media screen and (max-width:570px) {
+/* @media screen and (max-width:570px) {
 	#SearchBar {
 		top: 10%;
 	}
-}
+} */
 
 /* Footer */
 footer {
@@ -122,7 +125,9 @@ footer {
 }
 
 .weather-table-container{
-  background-color: #E1F2FF;
+  /* background-color: #E1F2FF; */
+  /* background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(../assets/Background.jpg); */
+  background-size: contain;
 }
 
 .form-group{
@@ -139,7 +144,7 @@ form{
 }
 
 .fav-item-icon{
-  color: yellow !important;
+  color: #FFDF8C !important;
 }
 
 .alert{    width: 65%;
@@ -147,3 +152,7 @@ form{
   left: 60%;
   /* margin-bottom: 5px !important; */
   padding: 1px !important;}
+
+  .SearchDiv{
+    height:250px;
+  }

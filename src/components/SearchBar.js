@@ -124,7 +124,7 @@ class SearchBar extends React.Component {
   
   render() {
       return (
-        <div>
+        <div className='SearchDiv'>
           {this.state.callMade && !this.state.onDash ?
         <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
             : <></>}
