@@ -7,7 +7,7 @@ function Navbar({ setToken, setUser, setMessage }) {
       return (
       <div>
         <nav className="navbar mx-auto">
-          <span className="navbar-brand mb-0 h1 mx-auto"><Link to='/'>React Weather App</Link></span>
+          <span className="navbar-brand mb-0 h1 mx-auto"><Link to='/'>Weather App</Link></span>
           { localStorage.getItem('user') ? 
             <>
             <Logout setToken={setToken} setUser={setUser} setMessage={setMessage} />
