@@ -9,7 +9,7 @@ h1, h2, h5, p{
 
 /* Header */
 .navbar{
-  background-color: #E1F2FF;
+  /* background-color: #FFDF8C; */
   color: #476985;
 }
 
@@ -88,19 +88,21 @@ h1, h2, h5, p{
 }
 
 /* Search Bar */
-#SearchBar{
+/* #SearchBar{
   width: 50%;
   margin: 100px 0 100px 25%;
   display: flex;
   position: absolute;
-  top: 10%;
+  top: 10%; */
   /* top: 35%; */
-}
+/* } */
 /* @media screen and (max-width:570px) {
 	#SearchBar {
 		top: 10%;
 	}
 } */
+
+/* #9DD0AF */
 
 /* Footer */
 footer {
@@ -130,14 +132,14 @@ footer {
   background-size: contain;
 }
 
-.form-group{
+/* .form-group{
   margin-bottom: 10px;
 }
 
 form{
   margin-top: 20px;
   margin-bottom: 20px;
-}
+} */
 
 .alert{
   margin-bottom: 0 !important;
@@ -154,5 +156,166 @@ form{
   padding: 1px !important;}
 
   .SearchDiv{
-    height:250px;
+    height: 175px;
+    /* background-image: url(https://cdn.pixabay.com/photo/2022/04/29/10/58/clouds-7163415_1280.jpg); */
+    /* background-image: url(../assets/sunny.png); */
   }
+
+  /* SearchBar CSS - https://codepen.io/menelaosly/pen/rZddyb  */
+  /* body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background: #07051a;
+} */
+
+form{
+    position: relative;
+    top: 50%;
+    /* top:80px; */
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 150px;
+    height: 150px;
+    /* background: #FFDF8C; */
+    box-sizing: border-box;
+    /* border-radius: 75px; */
+    /* border: 4px solid #FFDF8C; */
+    /* padding: 5px; */
+}
+
+input{
+    position: absolute;
+    /* top: 0; */
+    top: 35%;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 55px;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    /* top: 0; */
+    top: 35%;
+    right: 0;
+    border-radius: 50%;
+    color: #add7c9;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:focus-within,
+form:hover,
+form:valid{
+    width: 200px;
+    cursor: pointer;
+}
+
+input:focus,
+form:hover input,
+form:valid input{
+    display: block;
+}
+
+form:hover .fa,
+form:valid .fa{
+    background: #FFDF8C;
+    color: #FFDF8C;
+}
+
+
+/* a {
+  display: none;
+  position: absolute;
+  top: 70px;
+  bottom:0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: white;
+  text-align: center; 
+  width: 100%;
+} */
+
+form:valid a {
+  display: block;
+}
+
+.search-icon{
+  transition: all 1s;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  color: #9DD0AF;
+  /* color: #add7c9; */
+  z-index: 2;
+  
+}
+
+form:focus-within .search-icon,
+form:hover .search-icon,
+form:valid .search-icon{
+  right: 0;
+}
+
+/* Cloud https://codepen.io/fershocastro/pen/dVBgxQ */
+.cloud {
+	width: 350px; height: 120px;
+	
+	background: #FFDF8C;
+	background: linear-gradient(top, #FFDF8C 5%, #FFDF8C 100%);
+	background: -webkit-linear-gradient(top, #FFDF8C 5%, #FFDF8C 100%);
+	background: -moz-linear-gradient(top, #FFDF8C 5%, #FFDF8C 100%);
+	background: -ms-linear-gradient(top, #FFDF8C 5%, #FFDF8C 100%);
+	background: -o-linear-gradient(top, #FFDF8C 5%, #FFDF8C 100%);
+	
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	
+	position: relative;
+	/* margin: 25px auto 20px; */
+  margin: 60px -68%;
+}
+
+.cloud:after, .cloud:before {
+	content: '';
+	position: absolute;
+	background: #FFDF8C;
+	z-index: -5
+}
+
+.cloud:after {
+	width: 100px; height: 100px;
+	top: -50px; left: 50px;
+	
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+}
+
+.cloud:before {
+	width: 180px; height: 180px;
+	top: -90px; right: 50px;
+	border-radius: 200px;
+	-webkit-border-radius: 200px;
+	-moz-border-radius: 200px;
+}

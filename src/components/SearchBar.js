@@ -124,23 +124,38 @@ class SearchBar extends React.Component {
   
   render() {
       return (
+        // <div className='SearchDiv'>
+        //   {this.state.callMade && !this.state.onDash ?
+        // <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
+        //     : <></>}
+        //   <form id='SearchBar' onSubmit={this.handleSubmit}>
+        //     <input type="text" className="form-control" 
+        //                         placeholder="Enter City name"
+        //                         aria-label="Username"
+        //                         aria-describedby="basic-addon1"
+        //                         value={this.state.city} name="city"
+        //                         onChange={this.handleInput} />
+        //     <button className='btn'>
+        //       <FontAwesomeIcon icon={faSearch} />
+        //     </button>
+        //   </form>
+        //   {/* Modal to show once location is searched */}
+        // </div>
         <div className='SearchDiv'>
-          {this.state.callMade && !this.state.onDash ?
-        <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
-            : <></>}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
-            <input type="text" className="form-control" 
-                                placeholder="Enter City name"
+          <input className='search-input' type="search" required placeholder="Enter City name"
                                 aria-label="Username"
                                 aria-describedby="basic-addon1"
                                 value={this.state.city} name="city"
-                                onChange={this.handleInput} />
-            <button className='btn'>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </form>
-          {/* Modal to show once location is searched */}
-        </div>
+                                onChange={this.handleInput}/>
+          {/* <i class="fa fa-search"></i> */}
+          <div class="cloud"></div>
+          <button className='btn'>
+            <FontAwesomeIcon className="search-icon" icon={faSearch} onClick />
+          </button>
+          {/* <Link to="javascript:void(0)" id="clear-btn">Clear</Link> */}
+        </form>
+      </div>
       );
   }
 }
