@@ -142,6 +142,9 @@ class SearchBar extends React.Component {
         //   {/* Modal to show once location is searched */}
         // </div>
         <div className='SearchDiv'>
+          {this.state.callMade && !this.state.onDash ?
+            <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
+                : <></>}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
           <input className='search-input' type="search" required placeholder="Enter City name"
                                 aria-label="Username"
@@ -149,9 +152,9 @@ class SearchBar extends React.Component {
                                 value={this.state.city} name="city"
                                 onChange={this.handleInput}/>
           {/* <i class="fa fa-search"></i> */}
-          <div class="cloud"></div>
+          <div className="cloud"></div>
           <button className='btn'>
-            <FontAwesomeIcon className="search-icon" icon={faSearch} onClick />
+            <FontAwesomeIcon className="search-icon" icon={faSearch} />
           </button>
           {/* <Link to="javascript:void(0)" id="clear-btn">Clear</Link> */}
         </form>

@@ -5,6 +5,7 @@ import './style.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faPlusCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { BsFillBookmarkStarFill } from "react-icons/bs";
+import Rainy from '../assets/RainyCloud.png';
 
 class ResultModal extends React.Component {
   state = {
@@ -47,7 +48,8 @@ class ResultModal extends React.Component {
                     </span>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.country}</h2>
-                    <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img>
+                    {/* <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img> */}
+                    <img className='modal-weather-logo' src={Rainy} alt="weather icon"></img>
                     <div className='row'>
                       <div className='col-6'>
                         <p className="ml-auto mr-4 mb-0 med-font">{city_weather.description}</p>
