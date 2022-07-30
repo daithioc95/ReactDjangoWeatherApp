@@ -11,6 +11,7 @@ h1, h2, h5, p{
 .navbar{
   /* background-color: #FFDF8C; */
   color: #476985;
+  justify-content: end;
 }
 
 /* Reuslt Modal */
@@ -190,7 +191,7 @@ form{
     background: #07051a;
 } */
 
-form{
+#SearchBar{
     position: relative;
     top: 50%;
     /* top:80px; */
@@ -206,7 +207,7 @@ form{
     /* padding: 5px; */
 }
 
-input{
+.search-input{
     position: absolute;
     /* top: 0; */
     top: 35%;
@@ -240,21 +241,21 @@ input{
     transition: all 1s;
 }
 
-form:focus-within,
-form:hover,
-form:valid{
+#SearchBar:focus-within,
+#SearchBar:hover,
+#SearchBar:valid{
     width: 200px;
     cursor: pointer;
 }
 
-input:focus,
-form:hover input,
-form:valid input{
+.search-input:focus,
+#SearchBar:hover .search-input,
+#SearchBar:valid .search-input{
     display: block;
 }
 
-form:hover .fa,
-form:valid .fa{
+#SearchBar:hover .fa,
+#SearchBar:valid .fa{
     background: #FFDF8C;
     color: #FFDF8C;
 }
@@ -273,7 +274,7 @@ form:valid .fa{
   width: 100%;
 } */
 
-form:valid a {
+#SearchBar:valid a {
   display: block;
 }
 
@@ -290,9 +291,9 @@ form:valid a {
   
 }
 
-form:focus-within .search-icon,
-form:hover .search-icon,
-form:valid .search-icon{
+#SearchBar:focus-within .search-icon,
+#SearchBar:hover .search-icon,
+#SearchBar:valid .search-icon{
   right: 0;
 }
 
@@ -348,11 +349,156 @@ form:valid .search-icon{
 }
 
 /* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+.search-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+.search-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
 
 /* clears the 'X' from Chrome */
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+.search-input[type="search"]::-webkit-search-decoration,
+.search-input[type="search"]::-webkit-search-cancel-button,
+.search-input[type="search"]::-webkit-search-results-button,
+.search-input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+/* Navbar Clound Frame https://itecnote.com/tecnote/css-apply-border-to-a-cloud-shape/ */
+.navItem {
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+
+  font-size: 30px;
+  /* color: white; */
+  color: #87CEEB;
+  text-align: center;
+
+  /* Same trick as previously used to make circles */
+  box-sizing: border-box;
+  width     : 150px;
+  height    : 150px;
+  padding   : 80px 1em 0 1em;
+
+  /* We make room for the "ears" of our cloud */
+  /* margin    : 0 100px; */
+
+  position: relative;
+
+  /* background-color: #809BCE; */
+  background-color: white;
+
+  /* Well, actually we are not making a full circle
+     as we want the bottom of our cloud to be flat.
+     Feel free to tweak this example to make a cloud
+     that isn't flat at the bottom ;) */
+  border-radius: 100% 100% 0 0;
+}
+
+/* Those are common style that apply to both our ::before
+   and ::after pseudo elements. */
+.navItem::before,
+.navItem::after {
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+  /* This is required to be allowed to display the
+     pseudo-elements, event if the value is an empty
+     string */
+  content: '';
+
+  /* We position our pseudo-elements on the left and
+     right sides of the box, but always at the bottom */
+  position: absolute;
+  bottom  : 0;
+
+  /* This makes sure our pseudo-elements will be below
+     the box content whatever happens. */
+  z-index : -1;
+
+  /* background-color: #809BCE; */
+  background-color: white;
+  border-radius: 100%;
+}
+
+.navItem::before {
+  /* This is the size of the clouds left ear */
+  width  : 125px;
+  height : 125px;
+
+  /* We slightly move it to the left */
+  left    : -80px;
+
+  /* To make sure that the bottom of the cloud
+     remains flat, we must make the bottom right
+     corner of the left ear square. */
+  border-bottom-right-radius: 0;
+}
+
+.navItem::after {
+  /* This is the size of the clouds left ear */
+  width  : 100px;
+  height : 100px;
+
+  /* We slightly move it to the right */
+  right   : -60px;
+
+  /* To make sure that the bottom of the cloud
+     remains flat, we must make the bottom left
+     corner of the right ear square. */
+  border-bottom-left-radius: 0;
+}
+
+/* fix below */
+/* .navItem:hover .navItem,
+.navItem::before:hover .navItem::before,
+.navItem::after:hover .navItem::after{
+  background-color: #FFDF8C;
+} */
+
+.scaled{
+  transform: scale(0.4);
+}
+
+.navbar-brand{
+  color: white;
+  /* color: #809BCE; */
+}
+
+a:link{
+  text-decoration: none;
+}
+
+/* .navItem:hover{
+  background-color: #FFDF8C;
+} */
+
+.navItem:hover, 
+.navItem:hover::before,
+.navItem:hover::after {
+  background-color: #FFDF8C;
+}
+
+nav ul{
+  margin-left: auto!important;
+}
+
+nav{
+  display: flex;
+  background-image: url(../assets/sky.svg);
+  background-size: cover;
+}
+
+#brand{
+  position: absolute;
+  /* left: 43%; */
+  right:45%;
+  font-size: 30px;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

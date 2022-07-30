@@ -24,6 +24,12 @@ function App() {
   }
 
   useEffect(() => {
+    setTimeout(() => {
+      setMessage("")
+    }, 5000);
+  }, [message])
+
+  useEffect(() => {
     checkToken();
     checkUser();
   }, [token, user])

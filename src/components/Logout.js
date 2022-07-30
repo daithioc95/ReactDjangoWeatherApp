@@ -18,7 +18,11 @@ const Logout = ({ setToken, setUser, setMessage }) => {
 
     return(
         <>
-            <button onClick={handleLogoutClick}>logout</button>
+            <button onClick={handleLogoutClick}>
+                <div className="navItem scaled">
+                    logout
+                </div>
+            </button>
         </>
     )
 }
