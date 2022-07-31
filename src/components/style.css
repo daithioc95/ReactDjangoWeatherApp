@@ -12,6 +12,7 @@ h1, h2, h5, p{
   /* background-color: #FFDF8C; */
   color: #476985;
   justify-content: end;
+  height: 120px;
 }
 
 /* Reuslt Modal */
@@ -47,9 +48,13 @@ h1, h2, h5, p{
 .modal-weather-logo{
   /* width: 20%;
   margin-left: 60%; */
-  width: 30%;
+  /* width: 30%;
   margin-top: -18%;
+  margin-left: 35%; */
+  width: 30%;
+  margin-top: -6%;
   margin-left: 35%;
+  margin-bottom: 3%;
 }
 
 /* Location Cards */
@@ -193,7 +198,7 @@ form{
 
 #SearchBar{
     position: relative;
-    top: 50%;
+    top: 70%;
     /* top:80px; */
     left: 50%;
     transform: translate(-50%,-50%);
@@ -368,6 +373,7 @@ form{
   font-size: 30px;
   /* color: white; */
   color: #87CEEB;
+  font-weight: bold;
   text-align: center;
 
   /* Same trick as previously used to make circles */
@@ -453,7 +459,21 @@ form{
   background-color: #FFDF8C;
 } */
 
-.scaled{
+@media screen and (max-width:570px) {
+  .list-item{
+    transform: scale(0.2) !important;
+    width: 70px;
+  }
+  .list-items{
+    margin-top: -15%;
+    margin-right: 2px;
+  }
+  #brand{
+    margin-top: -15%;
+  }
+}
+
+.list-item{
   transform: scale(0.4);
 }
 
@@ -478,6 +498,13 @@ a:link{
 
 nav ul{
   margin-left: auto!important;
+  display: -webkit-box !important;
+}
+
+@media screen and (max-width:1200px) {
+  nav{
+  background-image: url(../assets/skymob2.svg) !important;
+}
 }
 
 nav{

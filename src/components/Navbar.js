@@ -31,14 +31,14 @@ function Navbar({ setToken, setUser, setMessage }) {
         </nav> */}
         <nav className="nav navbar navbar-expand-lg">
           <Link id="brand" className="navbar-brand" to='/'>Weather App</Link>
-          <div>
+          <div className='list-items'>
             <ul className="navbar-nav ml-auto">
             { localStorage.getItem('user') ? 
             <>
-            <li className="nav-item">
+            <li className="list-item">
               <Logout setToken={setToken} setUser={setUser} setMessage={setMessage} />
             </li>
-            <li className="nav-item">
+            <li className="list-item">
               <Link to='/Favourites'>
                 <div className="navItem scaled">
                   Favourites
@@ -47,16 +47,18 @@ function Navbar({ setToken, setUser, setMessage }) {
             </li>
             </>:
             <>
-              <li className="nav-item">
+              <li className="list-item">
                 <Link to='/Register'>
                     <div className="navItem scaled">Register</div>
-                  </Link></li><li className="nav-item">
-                  <Link to='/Login'>
+                </Link>
+              </li>
+              <li className="list-item">
+                <Link to='/Login'>
                   <div className='navItem scaled'>
                     Login
                   </div>
                 </Link>
-                </li>
+              </li>
             </>
 }
             </ul>
