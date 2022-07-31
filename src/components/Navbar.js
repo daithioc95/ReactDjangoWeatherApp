@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Logout from './Logout';
 
 function Navbar({ setToken, setUser, setMessage }) {
   console.log(localStorage.getItem('user'))
+  const location = useLocation();
       return (
       <div>
         {/* <nav className="navbar mx-auto">
@@ -40,7 +41,7 @@ function Navbar({ setToken, setUser, setMessage }) {
             </li>
             <li className="list-item">
               <Link to='/Favourites'>
-                <div className="navItem scaled">
+                <div className={location.pathname === "/Favourites" ? 'active navItem scaled' :'navItem scaled'}>
                   Favourites
                 </div>
               </Link>
@@ -49,12 +50,12 @@ function Navbar({ setToken, setUser, setMessage }) {
             <>
               <li className="list-item">
                 <Link to='/Register'>
-                    <div className="navItem scaled">Register</div>
+                    <div className={location.pathname === "/Register" ? 'active navItem scaled' :'navItem scaled'}>Register</div>
                 </Link>
               </li>
               <li className="list-item">
                 <Link to='/Login'>
-                  <div className='navItem scaled'>
+                  <div className={location.pathname === "/Login" ? 'active navItem scaled' :'navItem scaled'}>
                     Login
                   </div>
                 </Link>

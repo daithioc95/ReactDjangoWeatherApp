@@ -12,7 +12,7 @@ h1, h2, h5, p{
   /* background-color: #FFDF8C; */
   color: #476985;
   justify-content: end;
-  height: 120px;
+  height: 135px;
 }
 
 /* Reuslt Modal */
@@ -528,4 +528,21 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+.form-group{
+  margin: 15px;
+}
+
+.btn-primary{
+  margin-left: 5%;
+  background-color: #87CEEB;
+  border: #87CEEB;
+}
+
+div.active,
+div.active::before,
+div.active::after
+{
+  background-color: #FFDF8C;
 }
