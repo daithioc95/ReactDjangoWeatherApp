@@ -167,19 +167,18 @@ form{
   margin-bottom: 20px;
 } */
 
-.alert{
-  margin-bottom: 0 !important;
-}
-
 .fav-item-icon{
   color: #FFDF8C !important;
 }
 
-.alert{    width: 65%;
-  height: 40px;
-  left: 60%;
-  /* margin-bottom: 5px !important; */
-  padding: 1px !important;}
+.alert{    
+  background-color: #87CEEB;
+  border-color: #87CEEB;
+  width: 65%;
+  /* height: 40px; */
+  margin: 5px auto 0;
+  /* padding: 1px !important; */
+}
 
   .SearchDiv{
     height: 175px;

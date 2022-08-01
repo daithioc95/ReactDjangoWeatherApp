@@ -7,29 +7,6 @@ function Navbar({ setToken, setUser, setMessage }) {
   const location = useLocation();
       return (
       <div>
-        {/* <nav className="navbar mx-auto">
-          <span className="navbar-brand mb-0 h1 mx-auto"><Link to='/'>Weather App</Link></span>
-          { localStorage.getItem('user') ? 
-            <>
-            <Logout setToken={setToken} setUser={setUser} setMessage={setMessage} />
-            <Link to='/Favourites'>Favourites</Link>
-            </>
-          : 
-          <>
-          <Link to='/Login'>
-            <div className='navItem scaled'>
-              Login
-            </div>
-          </Link>
-          <Link to='/Register'>
-            <div className='navItem scaled'>
-            Register
-            </div>
-          </Link>
-          </> 
-          }
-          
-        </nav> */}
         <nav className="nav navbar navbar-expand-lg">
           <Link id="brand" className="navbar-brand" to='/'>Weather App</Link>
           <div className='list-items'>
