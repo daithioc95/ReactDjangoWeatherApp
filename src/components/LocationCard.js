@@ -90,7 +90,7 @@ class LocationCard extends React.Component {
               <div className="container px-1 px-md-4 py-5 mx-auto">
                 <div className="">
                   <div className="card">
-                      <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
+                      <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon bookmark-icon' : 'bookmark-icon'} />
                     
                       {/* Delete location icon */}
                       { this.props.favourite==="true" ? <></>
@@ -100,7 +100,7 @@ class LocationCard extends React.Component {
                     </span> }
                       
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
-                    <img className='weather-logo' src={'./images/' + city_weather.icon} alt="weather icon"></img>
+                    <img className='weather-logo' src={process.env.PUBLIC_URL + '/images/' + city_weather.icon} alt="weather icon"></img>
                     {/* <img className='weather-logo' src={sunny} alt="weather icon"></img> */}
                     {/* <img className='weather-logo' src={Rainy} alt="weather icon"></img> */}
                     <p className="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>

@@ -80,6 +80,10 @@ h1, h2, h5, p{
   padding: 10px;
 }
 
+#modal-card{
+  min-height: 250px;
+}
+
 .empty-card{
   border: 5px dashed blue !important;
 }
@@ -102,6 +106,11 @@ h1, h2, h5, p{
 .info-button{
   margin-left: 92%;
   margin-bottom: 2%;
+  
+}
+
+.fa-circle-info{
+  color: #9DD0AF !important;
 }
 
 .info-button-loc{
@@ -176,6 +185,10 @@ form{
 
 .fav-item-icon{
   color: #FFDF8C !important;
+}
+
+.bookmark-icon{
+  cursor: pointer;
 }
 
 .alert{    
@@ -551,4 +564,8 @@ div.active::before,
 div.active::after
 {
   background-color: #FFDF8C;
+}
+
+.med-font{
+  font-size: 1.25rem;
 }

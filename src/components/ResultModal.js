@@ -41,14 +41,14 @@ class ResultModal extends React.Component {
                     // do not close modal if anything inside modal content is clicked
                     e.stopPropagation();
                   }}>
-                    <BsFillBookmarkStarFill onClick = {this.HighlightBookmark} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon' : ''} />
+                    <BsFillBookmarkStarFill onClick = {this.HighlightBookmark} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon bookmark-icon' : 'bookmark-icon'} />
                     <span className='text-right position-absolute remove-button'>
                       <FontAwesomeIcon style={{ color: 'red',
                       cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
                     </span>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.country}</h2>
-                    <img className='modal-weather-logo' src={'./images/' + city_weather.icon} alt="weather icon"></img>
+                    <img className='modal-weather-logo' src={process.env.PUBLIC_URL + '/images/' + city_weather.icon} alt="weather icon"></img>
                     {/* <img className='modal-weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img> */}
                     {/* <img className='modal-weather-logo' src={Rainy} alt="weather icon"></img> */}
                     <div className='row'>
