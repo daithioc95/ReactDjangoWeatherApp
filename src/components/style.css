@@ -63,11 +63,18 @@ h1, h2, h5, p{
   display: inline-block;
 }
 
+@media screen and (min-width:570px) {
+	.card {
+		min-height: 250px;
+	}
+}
+
 .card {
   /* background-color: #C4E4FF !important; */
   background-image: url(../assets/cardBG.jpg);
   background-size: cover;
-  min-height: 250px;
+  /* min-height: 250px; */
+  min-height: 403px;
   border-radius: 1.25rem !important;
   box-shadow: 0px 8px 16px 4px #9E9E9E;
   padding: 10px;

@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ResultModal from './ResultModal';
 import { BsFillBookmarkStarFill } from "react-icons/bs";
-import sunny from '../assets/sunny.png';
-import Rainy from '../assets/RainyCloud.png';
+// import Rainy from '../assets/RainDay.png';
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
@@ -101,9 +100,9 @@ class LocationCard extends React.Component {
                     </span> }
                       
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
-                    <img className='weather-logo' src={sunny} alt="weather icon"></img>
+                    <img className='weather-logo' src={'./images/' + city_weather.icon} alt="weather icon"></img>
+                    {/* <img className='weather-logo' src={sunny} alt="weather icon"></img> */}
                     {/* <img className='weather-logo' src={Rainy} alt="weather icon"></img> */}
-                    {/* <img className='weather-logo' src={'http://openweathermap.org/img/w/'+ city_weather.icon + '.png'} alt="weather icon"></img> */}
                     <p className="ml-auto mr-4 mb-0 med-font">{city_weather.brief}</p>
                     <h1 className="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
                     <span className='info-button'>
