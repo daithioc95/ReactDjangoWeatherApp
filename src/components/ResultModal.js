@@ -43,8 +43,7 @@ class ResultModal extends React.Component {
                   }}>
                     <BsFillBookmarkStarFill onClick = {this.HighlightBookmark} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon bookmark-icon' : 'bookmark-icon'} />
                     <span className='text-right position-absolute remove-button'>
-                      <FontAwesomeIcon style={{ color: 'red',
-                      cursor: 'pointer' }} icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
+                      <FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick={e => { this.onClose(); }} size="lg" />
                     </span>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.country}</h2>
@@ -65,8 +64,7 @@ class ResultModal extends React.Component {
                     {/* Reversed if else below - updating to dashAdd to differentiate from favourites */}
                     { this.props.dashAdd ?  <span className={this.props.infoButton}>
                       {/* Add location to dashboard icon */}
-                      <FontAwesomeIcon style={{ color: '#476985',
-                      cursor: 'pointer' }} icon={faPlusCircle} onClick = {() => {this.onClose(); 
+                      <FontAwesomeIcon className='info-icon' icon={faPlusCircle} onClick = {() => {this.onClose(); 
                       this.props.onAdd(city_weather.city, city_weather.id);}} size="lg" />
                     </span>: 
                     <></>

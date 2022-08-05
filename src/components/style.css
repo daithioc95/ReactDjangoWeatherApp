@@ -1,6 +1,8 @@
 /* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Josefin+Sans:wght@300&display=swap');
 *{
-  font-family: Arial;
+  font-family: 'Josefin Sans', sans-serif;
+  /* font-family: 'Courier Prime', monospace; */
 }
 
 h1, h2, h5, p{
@@ -163,8 +165,8 @@ footer {
   left: 50%;
   /* margin-top: 15px;
 	/* text-align: center; */
-	font-size: 13px;
-	color: #aaa;
+	font-size: 15px;
+	/* color: #aaa; */
 	margin-bottom: 0;
 }
 
@@ -197,6 +199,17 @@ form{
 }
 
 .bookmark-icon{
+  cursor: pointer;
+  color: #6582BC;
+}
+
+.remove-icon{
+  color: red;
+  cursor: pointer;
+}
+
+.info-icon{
+  color: #6582BC;
   cursor: pointer;
 }
 
@@ -399,6 +412,10 @@ form{
   margin-left: -35%;
 }
 
+.navTextLogout{
+  margin-left: -15% !important;
+}
+
 /* Navbar Clound Frame https://itecnote.com/tecnote/css-apply-border-to-a-cloud-shape/ */
 .navItem {
   -webkit-transition: background-color 0.5s ease-out;
@@ -507,9 +524,7 @@ form{
   transform: scale(0.4);
 }
 
-.list-items{
-  /* margin-top: -4%; */
-}
+
 
 .navbar-brand{
   color: white;

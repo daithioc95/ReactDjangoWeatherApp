@@ -20,7 +20,9 @@ const Logout = ({ setToken, setUser, setMessage }) => {
         <>
             <button onClick={handleLogoutClick}>
                 <div className="navItem scaled">
+                    <p className='navText'>
                     logout
+                    </p>
                 </div>
             </button>
         </>

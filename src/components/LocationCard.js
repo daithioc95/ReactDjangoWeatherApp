@@ -93,11 +93,12 @@ class LocationCard extends React.Component {
                       <BsFillBookmarkStarFill onClick = {() => this.setIsFav()} locationid={city_weather.id} size={45} className={this.state.isFav ? 'fav-item-icon bookmark-icon' : 'bookmark-icon'} />
                     
                       {/* Delete location icon */}
-                      { this.props.favourite==="true" ? <></>
+                      {/* { this.props.favourite==="true" ? <></>
             : 
-            <span className='text-right position-absolute remove-button'><FontAwesomeIcon style={{ color: 'red',
-                      cursor: 'pointer' }} icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
-                    </span> }
+            <span className='text-right position-absolute remove-button'><FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
+                    </span> } */}
+                    <span className='text-right position-absolute remove-button'><FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
+                    </span>
                       
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                     <img className='weather-logo' src={process.env.PUBLIC_URL + '/images/' + city_weather.icon} alt="weather icon"></img>
@@ -107,8 +108,7 @@ class LocationCard extends React.Component {
                     <h1 className="ml-auto mr-4 large-font">{city_weather.temperature}&#176;C</h1>
                     <span className='info-button'>
                       {/* More info mosal icon */}
-                      <FontAwesomeIcon style={{ color: '#6582BC',
-                      cursor: 'pointer' }} icon={faInfoCircle} onClick = {this.showModal} size="lg" />
+                      <FontAwesomeIcon className='info-icon' icon={faInfoCircle} onClick = {this.showModal} size="lg" />
                     </span>
                   </div>
                 </div>
