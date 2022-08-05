@@ -15,6 +15,12 @@ h1, h2, h5, p{
   height: 135px;
 }
 
+@media screen and (min-width:570px) {
+  .navbar{
+    padding-bottom: 2.5rem;
+  }
+}
+
 /* Reuslt Modal */
 .modal {
   position: fixed;
@@ -73,8 +79,7 @@ h1, h2, h5, p{
   /* background-color: #C4E4FF !important; */
   background-image: url(../assets/cardBG.jpg);
   background-size: cover;
-  /* min-height: 250px; */
-  min-height: 403px;
+  height: 100%;
   border-radius: 1.25rem !important;
   box-shadow: 0px 8px 16px 4px #9E9E9E;
   padding: 10px;
@@ -85,7 +90,8 @@ h1, h2, h5, p{
 }
 
 .empty-card{
-  border: 5px dashed blue !important;
+  /* border: 5px dashed blue !important; */
+  height: 300px;
 }
 
 .hide {
@@ -109,17 +115,20 @@ h1, h2, h5, p{
   color: #9DD0AF !important;
 }
 
-.fa-circle-info{
+/* .fa-circle-info{
   
-}
+} */
 
 .info-button-loc{
   display: none;
 }
 
 .weather-logo{
-  width: 50%;
-    margin-left: 30%;
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  /* width: 50%; */
+    /* margin-left: 30%; */
 }
 
 /* Search Bar */
@@ -318,7 +327,7 @@ form{
 #SearchBar:focus-within .search-icon,
 #SearchBar:hover .search-icon,
 #SearchBar:valid .search-icon{
-  right: 0;
+  right: 5px;
 }
 
 /* Cloud https://codepen.io/fershocastro/pen/dVBgxQ */
@@ -382,18 +391,20 @@ form{
 .search-input[type="search"]::-webkit-search-results-button,
 .search-input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+.navText{
+  font-size: 46px;
+  color: #87CEEB;
+  font-weight: bold;
+  text-align: center;
+  margin-left: -35%;
+}
+
 /* Navbar Clound Frame https://itecnote.com/tecnote/css-apply-border-to-a-cloud-shape/ */
 .navItem {
   -webkit-transition: background-color 0.5s ease-out;
   -moz-transition: background-color 0.5s ease-out;
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s ease-out;
-
-  font-size: 30px;
-  /* color: white; */
-  color: #87CEEB;
-  font-weight: bold;
-  text-align: center;
 
   /* Same trick as previously used to make circles */
   box-sizing: border-box;
@@ -494,6 +505,10 @@ form{
 
 .list-item{
   transform: scale(0.4);
+}
+
+.list-items{
+  /* margin-top: -4%; */
 }
 
 .navbar-brand{

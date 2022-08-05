@@ -19,7 +19,7 @@ function Navbar({ setToken, setUser, setMessage }) {
             <li className="list-item">
               <Link to='/Favourites'>
                 <div className={location.pathname === "/Favourites" ? 'active navItem scaled' :'navItem scaled'}>
-                  Favourites
+                <p className='navText'>Favourites</p>
                 </div>
               </Link>
             </li>
@@ -27,13 +27,13 @@ function Navbar({ setToken, setUser, setMessage }) {
             <>
               <li className="list-item">
                 <Link to='/Register'>
-                    <div className={location.pathname === "/Register" ? 'active navItem scaled' :'navItem scaled'}>Register</div>
+                    <div className={location.pathname === "/Register" ? 'active navItem scaled' :'navItem scaled'}><p className='navText'>Register</p></div>
                 </Link>
               </li>
               <li className="list-item">
                 <Link to='/Login'>
                   <div className={location.pathname === "/Login" ? 'active navItem scaled' :'navItem scaled'}>
-                    Login
+                  <p className='navText'>Login</p>
                   </div>
                 </Link>
               </li>
