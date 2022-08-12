@@ -25,6 +25,7 @@ class SearchBar extends React.Component {
     // so userfaves is updated
     if (this.props.favouriteList !== prevProps.favouriteList){
       this.fetchData(this.props.favouriteList);
+      console.log("fetched")
     }
   }
   constructor(props){
@@ -59,6 +60,11 @@ class SearchBar extends React.Component {
         [e.target.name]: e.target.value,
     });
   };
+
+  refreshFavs = (id) => {
+    // console.log(id)
+    this.props.refreshFavs(id)
+  }
 
 
   handleSubmit = (e) => {
@@ -152,7 +158,7 @@ class SearchBar extends React.Component {
         // </div>
         <div className='SearchDiv'>
           {this.state.callMade && !this.state.onDash ?
-            <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} />
+            <LocationCard key = {this.state.details[0]['keyRef']} id = {this.state.details[0]['id']} fromSearch = {true} favourite={this.state.isFav} onAdd={this.props.onAdd} refreshFavs={this.refreshFavs} />
                 : <></>}
           <form id='SearchBar' onSubmit={this.handleSubmit}>
           <input className='search-input' type="search" required placeholder="Enter City name"

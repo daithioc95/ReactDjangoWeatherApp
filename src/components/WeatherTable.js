@@ -38,6 +38,7 @@ const WeatherTable = (props) => {
     }
   }
   const refreshFavs=(id) => {
+    props.updateFavouriteList(id)
     if (locations.findIndex(item => item.id === id)!==-1) {
       let items = [...locations];
       let index = locations.findIndex(item => item.id === id)

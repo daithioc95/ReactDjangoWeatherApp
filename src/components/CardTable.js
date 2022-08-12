@@ -57,13 +57,22 @@ class CardTable extends React.Component {
         componentWillUnmount() {
             clearTimeout(this.interval);
           }
-        
+        updateFavouriteList = (id) => {
+            const  tempFaves = this.state.favourites
+            if(tempFaves.includes(id)){
+                tempFaves.pop(id)
+            }
+            else{
+                tempFaves.push(id)
+            }
+            this.setState({ favourites:tempFaves })
+        }
         render() {
             if(this.state.callMade === null){
                 return null; //Or some other replacement component or markup
              }
         if(this.props.type==="WeatherTable")
-            return <WeatherTable locationsData={this.state.WeatherLocations} favouritesList={this.state.favourites} />;
+            return <WeatherTable updateFavouriteList={this.updateFavouriteList} locationsData={this.state.WeatherLocations} favouritesList={this.state.favourites} />;
         if(this.props.type==="Favourites")
             return <Favourites />;
   }};

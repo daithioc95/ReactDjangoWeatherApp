@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 import ResultModal from './ResultModal';
 import { BsFillBookmarkStarFill } from "react-icons/bs";
+import {  useLocation } from 'react-router-dom'
 // import Rainy from '../assets/RainDay.png';
 // https://www.digitalocean.com/community/tutorials/five-ways-to-convert-react-class-components-to-functional-components-with-react-hooks
 
 class LocationCard extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state ={
@@ -57,7 +59,9 @@ class LocationCard extends React.Component {
     this.setState({
       isFav: !this.state.isFav
     });
-    this.props.refreshFavs(CardId)
+    if(window.location.pathname !== "/Favourites"){
+      this.props.refreshFavs(CardId)
+    }
     if(localStorage.getItem('user')){
       const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
       this.interval = setTimeout(() => {
@@ -98,8 +102,8 @@ class LocationCard extends React.Component {
             : 
             <span className='text-right position-absolute remove-button'><FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
                     </span> } */}
-                    <span className='text-right position-absolute remove-button'><FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
-                    </span>
+                    {window.location.pathname==="/Favourites"? <></> :<span className='text-right position-absolute remove-button'><FontAwesomeIcon className='remove-icon fa-lg' icon={faTimes} onClick = {() => this.props.onDelete(city_weather.id)} />
+                    </span>}
                       
                     <h2 className="ml-auto mr-4 mt-3 mb-0">{city_weather.city}</h2>
                     <img className='weather-logo' src={process.env.PUBLIC_URL + '/images/' + city_weather.icon} alt="weather icon"></img>
