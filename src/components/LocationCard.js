@@ -57,6 +57,7 @@ class LocationCard extends React.Component {
     this.setState({
       isFav: !this.state.isFav
     });
+    this.props.refreshFavs(CardId)
     if(localStorage.getItem('user')){
       const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "https://react-django-weather-app.herokuapp.com/";    
       this.interval = setTimeout(() => {

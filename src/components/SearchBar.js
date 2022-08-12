@@ -22,6 +22,10 @@ class SearchBar extends React.Component {
         });
       }
     }
+    // so userfaves is updated
+    if (this.props.favouriteList !== prevProps.favouriteList){
+      this.fetchData(this.props.favouriteList);
+    }
   }
   constructor(props){
     super(props)
@@ -105,11 +109,16 @@ class SearchBar extends React.Component {
         
         // check if id in favourite list
           if(this.props.favouriteList.includes(data[0]['id'])){
+              console.log("Fave")
+              console.log(this.props.favouriteList)
+              console.log(data[0]['id'])
               this.setState({ isFav:true, callMade:true })
           }
             else{
+              console.log("not fave")
+              console.log(this.props.favouriteList)
+              console.log(data[0]['id'])
               this.setState({ isFav:false, callMade:true })
-              // console.log("not fave")
             }
       }
       else{

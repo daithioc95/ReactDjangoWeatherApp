@@ -37,16 +37,32 @@ const WeatherTable = (props) => {
       emptyCards.pop(1)
     }
   }
+  const refreshFavs=(id) => {
+    if (locations.findIndex(item => item.id === id)!==-1) {
+      let items = [...locations];
+      let index = locations.findIndex(item => item.id === id)
+      let item = {...locations[index]};
+      console.log(item.favLocation)
+      if(item.favLocation === true){
+        item.favLocation = false
+      }
+      else{
+        item.favLocation = true
+      }
+      items[index] = item;
+      setLocations(items)
+    }
+  }
 
   return (
     <div className='container-fluid weather-table-container'>
       <div className='container'>
-        <SearchBar onAdd = {addLocation} favouriteList={props.favouritesList} dashLocations={locations} searchedDashLocation = {searchedDashLocation} />
+        <SearchBar refreshFavs={refreshFavs} onAdd = {addLocation} favouriteList={props.favouritesList} dashLocations={locations} searchedDashLocation = {searchedDashLocation} />
         <div className='row'>
           {/* Map all locations location cards */}
           <h1>Popular Locations</h1>
         {locations.map(location =>(
-          <LocationCard key = {location.keyRef} id = {location.id} 
+          <LocationCard refreshFavs={refreshFavs} key = {location.keyRef} id = {location.id} 
           onDelete = {deleteLocation} favourite={location.favLocation} fromSearch={false} onDash={location.onDash} />
         ))}
         {/* Map remaning slots with empty cards */}
