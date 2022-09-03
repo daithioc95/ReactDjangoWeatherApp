@@ -38,8 +38,12 @@ class CardTable extends React.Component {
                                         let newWeatherLocations = this.state.WeatherLocations
                                         console.log(this.state.favourites)
                                         if(this.state.favourites.includes(newWeatherLocations[i].id)){
+                                            console.log("newWeatherLocations")
                                             newWeatherLocations[i].favLocation=true;
                                             this.setState({ WeatherLocations: newWeatherLocations, callMade:true })
+                                        }
+                                        else{
+                                            this.setState({ callMade:true })
                                         }
                                     }
                                   }); 
@@ -50,6 +54,7 @@ class CardTable extends React.Component {
                         }, .1);
             }
             else{
+                console.log("newWeatherLocations else")
                 this.setState({ callMade:true })
             }
         }

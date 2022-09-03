@@ -105,6 +105,7 @@ class SearchBar extends React.Component {
       }
     
       if(data[0]['cod']===200){
+        console.log("searchbarmadeit")
         this.setState({
           details : data,
           city: "",
