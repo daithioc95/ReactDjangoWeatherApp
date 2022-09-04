@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-from decouple import config 
+from decouple import config
 import dj_database_url
 import django_heroku
 
@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken', # new
-    'dj_rest_auth', # new
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'dj_rest_auth.registration',
     'corsheaders',
     'mainApp',
@@ -88,12 +88,8 @@ ROOT_URLCONF = 'mydjangoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [
-        #     os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build'),
-        # ],
         'DIRS': [
             os.path.join(BASE_DIR, 'build'),
-            # os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -129,19 +125,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
-# DATABASES = {
-#     'default': {
-#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'NAME': config('DB_NAME'),
-#         # 'USER': config('USER_NAME'),
-#         # 'PASSWORD': config('PASSWORD'),
-#         # 'HOST': config('HOST'),
-#         # # 'PORT': '5432',
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
@@ -189,16 +172,13 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'C:\\Users\\daith\\Desktop\\VSCodeWorkspaces\\ReactDjangoWeatherApp\\frontend\\reactapp\\build\\static'),
-# ]
 
 STATIC_URL = '/static/'
 # location where django collect all static files
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # location where you will store your static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'build/static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')
+                    ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
