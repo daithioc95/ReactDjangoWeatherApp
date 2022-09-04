@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import Logout from "./Logout";
 
 function Navbar({ setToken, setUser, setMessage }) {
-	console.log(localStorage.getItem("user"));
 	const location = useLocation();
 	return (
 		<div>
