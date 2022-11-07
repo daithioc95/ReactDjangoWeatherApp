@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn mydjangoproject.wsgi -b :8000
+web: gunicorn mydjangoproject.wsgi:application
