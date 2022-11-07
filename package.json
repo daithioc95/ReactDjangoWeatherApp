@@ -34,7 +34,8 @@
 		"react-scripts": "4.0.3",
 		"supports-color": "^9.2.3",
 		"update-browserslist-db": "^1.0.10",
-		"web-vitals": "^2.1.4"
+		"web-vitals": "^2.1.4",
+		"whitenoise": "^0.0.1"
 	},
 	"scripts": {
 		"start": "react-dotenv && react-scripts start",
