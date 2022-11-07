@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath mydjangoproject.wsgi
+web: gunicorn --pythonpath ReactDjangoWeatherApp mydjangoproject.wsgi
