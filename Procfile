@@ -1,2 +1,1 @@
-web: gunicorn mydjangoproject.wsgi --log-file -
-release: python manage.py migrate
+web: gunicorn mydjangoproject.wsgi:application --log-file - --log-level debug
