@@ -1,1 +1,1 @@
-web: gunicorn ReactDjangoWeatherApp.mydjangoproject.wsgi
+web: gunicorn mydjangoproject.wsgi:application --log-file - --log-level debug
