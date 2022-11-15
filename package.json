@@ -80,5 +80,6 @@
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-react": "^7.30.0",
 		"react-bootstrap": "^2.4.0"
-	}
+	},
+	"homepage": "./"
 }
