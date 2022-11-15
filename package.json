@@ -41,8 +41,7 @@
 		"start": "react-dotenv && react-scripts start",
 		"build": "react-dotenv && react-scripts build",
 		"test": "react-dotenv && react-scripts test",
-		"eject": "react-scripts eject",
-		"postinstall": "npm run build"
+		"eject": "react-scripts eject"
 	},
 	"engines": {
 		"node": "16.13.1",
